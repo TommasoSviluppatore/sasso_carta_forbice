@@ -13,6 +13,10 @@ public class TCPBasic_Server {
 	
 	public int numeroContatto=0;
 	
+	public enum Elemento{
+		SASSO, CARTA, FORBICE;
+	}
+	
 	public TCPBasic_Server(){
 		
 		try {
@@ -28,6 +32,9 @@ public class TCPBasic_Server {
         input = new BufferedReader(new InputStreamReader(connection.getInputStream()));
         output = new BufferedWriter(new OutputStreamWriter(connection.getOutputStream()));
         
+        String risposta, elemento_essere;
+        
+        output.write("\n Vuoi essere sasso, carta o forbice?  ");  risposta=input.readLine(); elemento_essere=risposta;
 
         while (true) {
         	
@@ -43,6 +50,9 @@ public class TCPBasic_Server {
 
             output.write(letta.toUpperCase() + "\n");
             output.flush();
+            
+            String risposta=input.readLine();
+           
             
             
             
