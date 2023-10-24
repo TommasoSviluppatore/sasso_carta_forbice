@@ -11,9 +11,9 @@ public class TCPBasic_Server {
 	private BufferedReader input;
 	private BufferedWriter output;
 	
-	private int vittorieServer=0;
-	private int vittorieClient=0;
+	private int vittorieServer=0, vittorieClient=0;
     private String rispostaServer, elementoEssereServer, elementoEssereGiocatore, rispostaGiocatore;
+    private boolean toccaA=false;
 	
 	public enum oggettochesie {
 	    SASSO(1),
@@ -63,6 +63,7 @@ public class TCPBasic_Server {
 
         		System.out.println("ora è il tuo turno, immetti la tua mossa");
         		rispostaServer=System.console().readLine();
+        		toccaA=true;
         		
         		
         		if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()) == oggettochesie.valueOf(rispostaServer.toUpperCase())) {
@@ -81,13 +82,42 @@ public class TCPBasic_Server {
         			output.write("il giocatore 2 \"/*client*/+\"ha accumulato un punto");
         			vittorieClient++;
         			
-        		}else if(true) {
+        		}else{
         			output.write("errore generico da ignorare");
         			System.out.println("errore generico da ingnorare");
         		}
         		
         }else {
         	//mossa del server
+    		System.out.println("prima mossa del server");
+    		output.write("Il server giocherà per primo");
+    		rispostaServer=System.console().readLine();
+
+    		output.write("ora è il tuo turno, immetti la tua mossa");
+    		rispostaGiocatore=input.readLine();
+    		toccaA=false;
+    		
+    		
+    		if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()) == oggettochesie.valueOf(rispostaServer.toUpperCase())) {
+    			System.out.println("\nParreggio");
+    			output.write("Parreggio");
+    			
+    			
+    		}else if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()) < oggettochesie.valueOf(rispostaServer.toUpperCase())) {
+    			System.out.println("il giocatore 1 "/*server*/+"ha accumulato un punto");
+    			output.write("il giocatore 1 \"/*server*/+\"ha accumulato un punto");
+    			vittorieServer++;
+    			
+    			
+    		}else if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()) > oggettochesie.valueOf(rispostaServer.toUpperCase())){
+    			System.out.println("il giocatore 2 "/*giocatore*/+"ha accumulato un punto");
+    			output.write("il giocatore 2 \"/*client*/+\"ha accumulato un punto");
+    			vittorieClient++;
+    			
+    		}else{
+    			output.write("errore generico da ignorare");
+    			System.out.println("errore generico da ingnorare");
+    		}
         	
         }
         
@@ -108,9 +138,71 @@ public class TCPBasic_Server {
             
             String risposta=input.readLine();
            
-            
-            
-            
+            if(toccaA) {
+            	//mossa del client
+        		System.out.println("mossa del client");
+        		rispostaGiocatore=input.readLine();
+
+        		System.out.println("mossa del server");
+        		output.write("mossa del server");
+        		rispostaServer=System.console().readLine();
+        		toccaA=!toccaA;
+        		
+        		
+        		if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()) == oggettochesie.valueOf(rispostaServer.toUpperCase())) {
+        			System.out.println("\nParreggio");
+        			output.write("Parreggio");
+        			
+        			
+        		}else if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()) < oggettochesie.valueOf(rispostaServer.toUpperCase())) {
+        			System.out.println("il giocatore 1 "/*server*/+"ha accumulato un punto");
+        			output.write("il giocatore 1 \"/*server*/+\"ha accumulato un punto");
+        			vittorieServer++;
+        			
+        			
+        		}else if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()) > oggettochesie.valueOf(rispostaServer.toUpperCase())){
+        			System.out.println("il giocatore 2 "/*giocatore*/+"ha accumulato un punto");
+        			output.write("il giocatore 2 \"/*client*/+\"ha accumulato un punto");
+        			vittorieClient++;
+        			
+        		}else{
+        			output.write("errore generico da ignorare");
+        			System.out.println("errore generico da ingnorare");
+        		}
+        		
+        		
+            }else {
+            	
+            	
+        		System.out.println("mossa del server");
+        		output.write("mossa del server");
+        		rispostaServer=System.console().readLine();
+        		
+            	System.out.println("mossa del client");
+        		rispostaGiocatore=input.readLine();
+        		toccaA=!toccaA;
+        		
+        		if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()) == oggettochesie.valueOf(rispostaServer.toUpperCase())) {
+        			System.out.println("\nParreggio");
+        			output.write("Parreggio");
+        			
+        			
+        		}else if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()) < oggettochesie.valueOf(rispostaServer.toUpperCase())) {
+        			System.out.println("il giocatore 1 "/*server*/+"ha accumulato un punto");
+        			output.write("il giocatore 1 \"/*server*/+\"ha accumulato un punto");
+        			vittorieServer++;
+        			
+        			
+        		}else if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()) > oggettochesie.valueOf(rispostaServer.toUpperCase())){
+        			System.out.println("il giocatore 2 "/*giocatore*/+"ha accumulato un punto");
+        			output.write("il giocatore 2 \"/*client*/+\"ha accumulato un punto");
+        			vittorieClient++;
+        			
+        		}else{
+        			output.write("errore generico da ignorare");
+        			System.out.println("errore generico da ingnorare");
+        		}
+            }
         }
 
         input.close();
