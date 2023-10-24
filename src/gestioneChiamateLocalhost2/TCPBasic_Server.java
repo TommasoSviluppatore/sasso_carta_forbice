@@ -11,31 +11,86 @@ public class TCPBasic_Server {
 	private BufferedReader input;
 	private BufferedWriter output;
 	
-	public int numeroContatto=0;
+	private int vittorieServer=0;
+	private int vittorieClient=0;
+    private String rispostaServer, elementoEssereServer, elementoEssereGiocatore, rispostaGiocatore;
 	
-	public enum Elemento{
-		SASSO, CARTA, FORBICE;
+	public enum oggettochesie {
+	    SASSO(1),
+	    FORBICE(2),
+	    CARTA(3);
+
+	    private final int valore;
+
+	    oggettochesie(int valore) {
+	        this.valore = valore;
+	    }
+
+	    public int getValore() {
+	        return valore;
+	    }
 	}
 	
 	public TCPBasic_Server(){
 		
 		try {
 		
-		System.out.println("SERVER ATTIVO");
+		System.out.println("\nSERVER ATTIVO");
         server = new ServerSocket(8081);
         
-        System.out.println("SERVER IN ATTESA CHE UN CLIENT SI CONNETTA.....");
+        System.out.println("\nSERVER IN ATTESA CHE UN CLIENT SI CONNETTA.....");
         connection = server.accept();
 
-        System.out.println(connection);
+        System.out.println("\n"+connection+"---------------\n");
 
         input = new BufferedReader(new InputStreamReader(connection.getInputStream()));
         output = new BufferedWriter(new OutputStreamWriter(connection.getOutputStream()));
         
-        String risposta, elemento_essere;
         
-        output.write("\n Vuoi essere sasso, carta o forbice?  ");  risposta=input.readLine(); elemento_essere=risposta;
+        
+        
+        System.out.println("Benvenuto in sesso, carta, forbice!");
+        System.out.println("Voi far fare la prima mossa al tuo avversario?");
+        
+        rispostaServer=System.console().readLine();
+      
+        if(rispostaServer=="si") {
+        	
+        		//mossa del client
+        		System.out.println("prima mossa del client");
+        		output.write("Il server ha acconsentito a darti la prima mossa, cosa vuoi essere");
+        		rispostaGiocatore=input.readLine();
 
+        		System.out.println("ora è il tuo turno, immetti la tua mossa");
+        		rispostaServer=System.console().readLine();
+        		
+        		
+        		if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()) == oggettochesie.valueOf(rispostaServer.toUpperCase())) {
+        			System.out.println("\nParreggio");
+        			output.write("Parreggio");
+        			
+        			
+        		}else if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()) < oggettochesie.valueOf(rispostaServer.toUpperCase())) {
+        			System.out.println("il giocatore 1 "/*server*/+"ha accumulato un punto");
+        			output.write("il giocatore 1 \"/*server*/+\"ha accumulato un punto");
+        			vittorieServer++;
+        			
+        			
+        		}else if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()) > oggettochesie.valueOf(rispostaServer.toUpperCase())){
+        			System.out.println("il giocatore 2 "/*giocatore*/+"ha accumulato un punto");
+        			output.write("il giocatore 2 \"/*client*/+\"ha accumulato un punto");
+        			vittorieClient++;
+        			
+        		}else if(true) {
+        			output.write("errore generico da ignorare");
+        			System.out.println("errore generico da ingnorare");
+        		}
+        		
+        }else {
+        	//mossa del server
+        	
+        }
+        
         while (true) {
         	
         	//INIZIO PROGRAMMA
