@@ -12,3 +12,5 @@ Esempio File agenda
 Mario;02672727
 Bianca;068382928
 Francesca;33877778899
+
+con file
