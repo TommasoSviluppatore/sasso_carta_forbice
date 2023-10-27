@@ -1,6 +1,4 @@
-package gestioneChiamateLocalhost;
-
-import gestioneChiamateLocalhost2.TCPBasic_Server;
+package model;
 
 public class MainServer {
 	

@@ -1,4 +1,4 @@
-package gestioneChiamateLocalhost2;
+<>package model;
 
 import java.io.*; 
 import java.net.*; 
@@ -53,7 +53,7 @@ public class TCPBasic_Server {
         System.out.println("Voi far fare la prima mossa al tuo avversario?");
         
         rispostaServer=System.console().readLine();
-      
+        
         if(rispostaServer=="si") {
         	
         		//mossa del client

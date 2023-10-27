@@ -1,6 +1,4 @@
-package gestioneChiamateLocalhost;
-
-import gestioneChiamateLocalhost2.TCPBasic_Client;
+package model;
 
 public class MainClient{
 	public static void main(String[] args) {

@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author studente
- *
- */
-module Rubricasocket {
-}

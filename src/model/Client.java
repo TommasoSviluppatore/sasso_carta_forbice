@@ -1,4 +1,4 @@
-package gestioneChiamateLocalhost;
+package model;
 
 import java.io.*; 
 import java.net.*; 
