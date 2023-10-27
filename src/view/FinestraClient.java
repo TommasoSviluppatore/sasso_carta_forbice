@@ -6,16 +6,15 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.io.*;
 import javax.imageio.*;
+import control.OttenitoreCose;
 
 public class FinestraClient extends JFrame {
 
-	private JPanel contentPane;
-	private JPanel pannelloInput;
-	private JPanel pannelloOutput;
+	private JPanel contentPane, pannelloInput, pannelloOutput;
 	private JLabel labelMessaggio;
-	private JButton btnForbice;
-	private JButton btnSasso;
-	private JButton btnCarta;
+	private JButton btnForbice, btnSasso, btnCarta;
+	
+	private String contenuto1, contenuto2;
 	
 	/**
 	 * Launch the application.
@@ -79,6 +78,22 @@ public class FinestraClient extends JFrame {
 		labelMessaggio.setBounds(12, 53, 400, 15);
 		pannelloOutput.add(labelMessaggio);
 	}
+	
+	public JButton ritornaCarta(){return btnCarta;}
+	public JButton ritornaSasso(){return btnSasso;}
+	public JButton ritornaForbice(){return btnForbice;}
+	
+	public void registraEvento(OttenitoreCose controller) {
+		// TODO Auto-generated method stub
+		this.btnCarta.addActionListener(controller);
+		this.btnSasso.addActionListener(controller);
+		this.btnForbice.addActionListener(controller);
+	}
+	
+	public void setContenuto1(String a) { this.contenuto1=a; }
+	public void setContenuto2(String a) { this.contenuto1=a; }
+	public String getContenuto1() { return contenuto1; }
+	public String getContenuto2() { return contenuto1; }
 	
 	
 }

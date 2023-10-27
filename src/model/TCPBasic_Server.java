@@ -1,4 +1,4 @@
-<>package model;
+package model;
 
 import java.io.*; 
 import java.net.*; 
@@ -65,19 +65,23 @@ public class TCPBasic_Server {
         		rispostaServer=System.console().readLine();
         		toccaA=true;
         		
+
+                oggettochesie mossa_giocatore = oggettochesie.valueOf(rispostaGiocatore.toUpperCase());
+                oggettochesie mossa_server = (oggettochesie.valueOf(rispostaServer.toUpperCase()));
         		
-        		if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()) == oggettochesie.valueOf(rispostaServer.toUpperCase())) {
+        		
+        		if( mossa_giocatore.getValore() == mossa_server.getValore()) {
         			System.out.println("\nParreggio");
         			output.write("Parreggio");
         			
         			
-        		}else if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()) < oggettochesie.valueOf(rispostaServer.toUpperCase())) {
+        		}else if( mossa_giocatore.getValore() > mossa_server.getValore()) {
         			System.out.println("il giocatore 1 "/*server*/+"ha accumulato un punto");
         			output.write("il giocatore 1 \"/*server*/+\"ha accumulato un punto");
         			vittorieServer++;
         			
         			
-        		}else if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()) > oggettochesie.valueOf(rispostaServer.toUpperCase())){
+        		}else if( mossa_giocatore.getValore() < mossa_server.getValore() ){
         			System.out.println("il giocatore 2 "/*giocatore*/+"ha accumulato un punto");
         			output.write("il giocatore 2 \"/*client*/+\"ha accumulato un punto");
         			vittorieClient++;
@@ -97,19 +101,22 @@ public class TCPBasic_Server {
     		rispostaGiocatore=input.readLine();
     		toccaA=false;
     		
+            oggettochesie mossa_giocatore = oggettochesie.valueOf(rispostaGiocatore.toUpperCase());
+            oggettochesie mossa_server = (oggettochesie.valueOf(rispostaServer.toUpperCase()));
     		
-    		if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()) == oggettochesie.valueOf(rispostaServer.toUpperCase())) {
+    		
+    		if( mossa_giocatore.getValore() == mossa_server.getValore() ) {
     			System.out.println("\nParreggio");
     			output.write("Parreggio");
     			
     			
-    		}else if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()) < oggettochesie.valueOf(rispostaServer.toUpperCase())) {
+    		}else if( mossa_giocatore.getValore() > mossa_server.getValore()) {
     			System.out.println("il giocatore 1 "/*server*/+"ha accumulato un punto");
     			output.write("il giocatore 1 \"/*server*/+\"ha accumulato un punto");
     			vittorieServer++;
     			
     			
-    		}else if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()) > oggettochesie.valueOf(rispostaServer.toUpperCase())){
+    		}else if( mossa_giocatore.getValore() < mossa_server.getValore() ){
     			System.out.println("il giocatore 2 "/*giocatore*/+"ha accumulato un punto");
     			output.write("il giocatore 2 \"/*client*/+\"ha accumulato un punto");
     			vittorieClient++;
@@ -148,19 +155,22 @@ public class TCPBasic_Server {
         		rispostaServer=System.console().readLine();
         		toccaA=!toccaA;
         		
+        		oggettochesie mossa_giocatore = oggettochesie.valueOf(rispostaGiocatore.toUpperCase());
+                oggettochesie mossa_server = (oggettochesie.valueOf(rispostaServer.toUpperCase()));
         		
-        		if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()) == oggettochesie.valueOf(rispostaServer.toUpperCase())) {
+        		
+        		if(mossa_giocatore.getValore() == mossa_server.getValore()) {
         			System.out.println("\nParreggio");
         			output.write("Parreggio");
         			
         			
-        		}else if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()) < oggettochesie.valueOf(rispostaServer.toUpperCase())) {
+        		}else if(mossa_giocatore.getValore() < mossa_server.getValore()) {
         			System.out.println("il giocatore 1 "/*server*/+"ha accumulato un punto");
         			output.write("il giocatore 1 \"/*server*/+\"ha accumulato un punto");
         			vittorieServer++;
         			
         			
-        		}else if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()) > oggettochesie.valueOf(rispostaServer.toUpperCase())){
+        		}else if(mossa_giocatore.getValore() > mossa_server.getValore()){
         			System.out.println("il giocatore 2 "/*giocatore*/+"ha accumulato un punto");
         			output.write("il giocatore 2 \"/*client*/+\"ha accumulato un punto");
         			vittorieClient++;
@@ -182,18 +192,21 @@ public class TCPBasic_Server {
         		rispostaGiocatore=input.readLine();
         		toccaA=!toccaA;
         		
-        		if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()) == oggettochesie.valueOf(rispostaServer.toUpperCase())) {
+        		oggettochesie mossa_giocatore = oggettochesie.valueOf(rispostaGiocatore.toUpperCase());
+                oggettochesie mossa_server = (oggettochesie.valueOf(rispostaServer.toUpperCase()));
+        		
+        		if(mossa_giocatore.getValore() == mossa_server.getValore()) {
         			System.out.println("\nParreggio");
         			output.write("Parreggio");
         			
         			
-        		}else if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()) < oggettochesie.valueOf(rispostaServer.toUpperCase())) {
+        		}else if(mossa_giocatore.getValore() < mossa_server.getValore()) {
         			System.out.println("il giocatore 1 "/*server*/+"ha accumulato un punto");
         			output.write("il giocatore 1 \"/*server*/+\"ha accumulato un punto");
         			vittorieServer++;
         			
         			
-        		}else if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()) > oggettochesie.valueOf(rispostaServer.toUpperCase())){
+        		}else if(mossa_giocatore.getValore() > mossa_server.getValore()){
         			System.out.println("il giocatore 2 "/*giocatore*/+"ha accumulato un punto");
         			output.write("il giocatore 2 \"/*client*/+\"ha accumulato un punto");
         			vittorieClient++;
