@@ -4,12 +4,17 @@ import java.io.*;
 import java.net.*; 
 import java.util.*;
 
+import control.OttenitoreCose;
+import view.FinestraClient;
+
 public class TCPBasic_Server {
 	
 	private ServerSocket server;
 	private Socket connection;
 	private BufferedReader input;
 	private BufferedWriter output;
+	private FinestraClient interfaccia;
+	private OttenitoreCose ricavitoreCose;
 	
 	private int vittorieServer=0, vittorieClient=0;
     private String rispostaServer, elementoEssereServer, elementoEssereGiocatore, rispostaGiocatore;
@@ -59,7 +64,10 @@ public class TCPBasic_Server {
         		//mossa del client
         		System.out.println("prima mossa del client");
         		output.write("Il server ha acconsentito a darti la prima mossa, cosa vuoi essere");
-        		rispostaGiocatore=input.readLine();
+        		//rispostaGiocatore=input.readLine();
+        		for(int cont1=0;rispostaGiocatore!="" || cont1<4; cont1++) {
+            		rispostaGiocatore=ricavitoreCose.getMossaAvversario();
+        		}
 
         		System.out.println("ora è il tuo turno, immetti la tua mossa");
         		rispostaServer=System.console().readLine();
@@ -71,6 +79,7 @@ public class TCPBasic_Server {
         		
         		
         		if( mossa_giocatore.getValore() == mossa_server.getValore()) {
+        			interfaccia.setContenuto1("");
         			System.out.println("\nParreggio");
         			output.write("Parreggio");
         			
@@ -98,7 +107,9 @@ public class TCPBasic_Server {
     		rispostaServer=System.console().readLine();
 
     		output.write("ora è il tuo turno, immetti la tua mossa");
-    		rispostaGiocatore=input.readLine();
+    		for(int cont1=0;rispostaGiocatore!="" || cont1<4; cont1++) {
+        		rispostaGiocatore=ricavitoreCose.getMossaAvversario();
+    		}
     		toccaA=false;
     		
             oggettochesie mossa_giocatore = oggettochesie.valueOf(rispostaGiocatore.toUpperCase());
@@ -148,7 +159,9 @@ public class TCPBasic_Server {
             if(toccaA) {
             	//mossa del client
         		System.out.println("mossa del client");
-        		rispostaGiocatore=input.readLine();
+        		for(int cont1=0;rispostaGiocatore!="" || cont1<4; cont1++) {
+            		rispostaGiocatore=ricavitoreCose.getMossaAvversario();
+        		}
 
         		System.out.println("mossa del server");
         		output.write("mossa del server");
@@ -189,7 +202,9 @@ public class TCPBasic_Server {
         		rispostaServer=System.console().readLine();
         		
             	System.out.println("mossa del client");
-        		rispostaGiocatore=input.readLine();
+            	for(int cont1=0;rispostaGiocatore!="" || cont1<4; cont1++) {
+            		rispostaGiocatore=ricavitoreCose.getMossaAvversario();
+        		}
         		toccaA=!toccaA;
         		
         		oggettochesie mossa_giocatore = oggettochesie.valueOf(rispostaGiocatore.toUpperCase());
@@ -222,12 +237,12 @@ public class TCPBasic_Server {
         output.close();
 
         connection.close();
-
-
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
-}
+        
+		} catch (IOException e) {
+		e.printStackTrace();
+		}
+	}
+	
 	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
 		

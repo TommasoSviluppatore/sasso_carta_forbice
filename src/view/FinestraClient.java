@@ -90,9 +90,9 @@ public class FinestraClient extends JFrame {
 		this.btnForbice.addActionListener(controller);
 	}
 	
-	public void setContenuto1(String a) { this.contenuto1=a; }
+	public void setContenuto1(String a) { this.labelMessaggio.toString=a; }
 	public void setContenuto2(String a) { this.contenuto1=a; }
-	public String getContenuto1() { return contenuto1; }
+	public String getContenuto1() { return labelMessaggio.toString(); }
 	public String getContenuto2() { return contenuto1; }
 	
 	
