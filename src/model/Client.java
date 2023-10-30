@@ -26,12 +26,11 @@ public class Client {
 		tastiera = new BufferedReader(new InputStreamReader(System.in)); 
 		try { 
 			while(!messaggio.equals("fine")) { 
-				messaggio = dalServer.readLine(); 
-				System.out.println(messaggio); 
-				if (!messaggio.equals("fine")) { 
-					messaggio = tastiera.readLine(); 
-					alServer.println(messaggio); 
-				} 
+				
+				
+				
+				
+				
 			} 
 			connessione.close(); 
 			} catch(IOException e) { e.printStackTrace(); }

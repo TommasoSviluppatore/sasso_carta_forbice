@@ -29,15 +29,9 @@ public class Server {
 		try {
 			alClient.println("Salve");
 			while(!messaggio.equals("fine")) {
-				messaggio = dalClient.readLine();
-				System.out.println(messaggio);
-				if (!messaggio.equals("fine")) {
-					messaggio = tastiera.readLine();
-					
-					
-					//alClient.println(messaggio);
-					//qui invia il server
-					
+				
+				
+				
 					
 					
 				}
