@@ -11,6 +11,8 @@ public class Server {
 	private Socket connessione;
 	private BufferedReader dalClient;
 	private PrintStream alClient; // Scrive bytes mentre PrintWriter scrive caratteri
+	private BufferedReader input;
+	private BufferedWriter output;
 	
 	public Server() { // costruttore
 		try {
