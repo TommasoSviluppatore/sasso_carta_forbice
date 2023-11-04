@@ -40,8 +40,8 @@ public class Server {
 			System.out.println("Server attivo");
 			System.out.println(server.getInetAddress());
 			connection = server.accept();
-			dalClient = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-			alClient = new PrintStream(connection.getOutputStream());
+			BufferedReader dalClient = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+			PrintStream alClient = new PrintStream(connection.getOutputStream());
 		} catch (IOException e) {e.printStackTrace();}
 	}
 	
