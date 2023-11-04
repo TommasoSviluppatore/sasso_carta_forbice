@@ -3,6 +3,9 @@ package model;
 import java.io.*; 
 import java.net.*; 
 import java.util.*;
+import model.TCPBasic_Server;
+import view.FinestraClient;
+import control.OttenitoreCose;
 
 import model.TCPBasic_Server.oggettochesie;
 
@@ -11,8 +14,15 @@ public class Server {
 	private Socket connessione;
 	private BufferedReader dalClient;
 	private PrintStream alClient; // Scrive bytes mentre PrintWriter scrive caratteri
+	private Socket connection;
 	private BufferedReader input;
 	private BufferedWriter output;
+	private FinestraClient interfaccia;
+	private OttenitoreCose ricavitoreCose;
+	
+	private int vittorieServer=0, vittorieClient=0;
+    private String rispostaServer, elementoEssereServer, elementoEssereGiocatore, rispostaGiocatore;
+    private boolean toccaA=false;
 	
 	public Server() { // costruttore
 		try {
@@ -189,7 +199,7 @@ public class Server {
 		        		}
 		        		
 		        		
-		            }else {
+		            }else{
 		            	
 		            	
 		        		System.out.println("mossa del server");
@@ -226,12 +236,10 @@ public class Server {
 		        			System.out.println("errore generico da ingnorare");
 		        		}
 		            }
-		        }
-					
-					
-				}
+		        }	
 			}
 			connessione.close();
 		} catch(IOException e) {e.printStackTrace();}
 	}
 }
+
