@@ -6,8 +6,10 @@ import java.util.*;
 import javax.swing.*;
 
 public class OttenitoreCose implements ActionListener{
+	
 	private FinestraClient finestra;
 	private String mossa_avversario;
+	
 	
 	public OttenitoreCose(FinestraClient frame) {
 		finestra.registraEvento(this);
