@@ -5,13 +5,13 @@ import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
 
-public class OttenitoreCose implements ActionListener{
+public class OttenitoreCoseFinestraGioco implements ActionListener{
 	
 	private FinestraClient finestra;
 	private String mossa_avversario;
 	
 	
-	public OttenitoreCose(FinestraClient frame) {
+	public OttenitoreCoseFinestraGioco(FinestraClient frame) {
 		finestra.registraEvento(this);
 	}
 	
