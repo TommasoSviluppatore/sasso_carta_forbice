@@ -37,7 +37,7 @@ public class FinestraClient extends JFrame {
 	 */
 	public FinestraClient() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 307);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -46,30 +46,30 @@ public class FinestraClient extends JFrame {
 		
 		pannelloInput = new JPanel();
 		pannelloInput.setBorder(new LineBorder(new Color(0, 0, 0)));
-		pannelloInput.setBounds(12, 146, 424, 114);
+		pannelloInput.setBounds(12, 146, 412, 115);
 		contentPane.add(pannelloInput);
 		pannelloInput.setLayout(null);
 		
 		btnForbice = new JButton("Forbice");
-		btnForbice.setBounds(22, 12, 110, 90);
+		btnForbice.setBounds(10, 12, 110, 90);
 		ImageIcon imagForbice=new ImageIcon(FinestraClient.class.getResource("/forbice.jpg"));
 		this.btnForbice.setIcon(imagForbice);
 		pannelloInput.add(btnForbice);
 		
 		btnSasso = new JButton("Sasso");
-		btnSasso.setBounds(154, 12, 110, 90);
+		btnSasso.setBounds(152, 12, 110, 90);
 		ImageIcon imagSasso=new ImageIcon(FinestraClient.class.getResource("/sasso.jpg"));
 		this.btnSasso.setIcon(imagSasso);
 		pannelloInput.add(btnSasso);
 		
 		btnCarta = new JButton("Carta");
-		btnCarta.setBounds(288, 12, 110, 90);
+		btnCarta.setBounds(292, 12, 110, 90);
 		ImageIcon imagCarta=new ImageIcon(FinestraClient.class.getResource("/carta.jpg"));
 		this.btnCarta.setIcon(imagCarta);
 		pannelloInput.add(btnCarta);
 		
 		pannelloOutput = new JPanel();
-		pannelloOutput.setBounds(12, 12, 424, 122);
+		pannelloOutput.setBounds(12, 12, 412, 122);
 		contentPane.add(pannelloOutput);
 		pannelloOutput.setLayout(null);
 		
@@ -79,9 +79,17 @@ public class FinestraClient extends JFrame {
 		pannelloOutput.add(labelMessaggio);
 	}
 	
-	public JButton ritornaCarta(){return btnCarta;}
-	public JButton ritornaSasso(){return btnSasso;}
-	public JButton ritornaForbice(){return btnForbice;}
+	public JButton ritornaCarta(){
+		return btnCarta;
+	}
+	
+	public JButton ritornaSasso(){
+		return btnSasso;
+	}
+	
+	public JButton ritornaForbice(){
+		return btnForbice;
+	}
 	
 	public void registraEvento(OttenitoreCose controller) {
 		// TODO Auto-generated method stub
@@ -90,10 +98,27 @@ public class FinestraClient extends JFrame {
 		this.btnForbice.addActionListener(controller);
 	}
 	
-	public void setContenuto1(String a) { this.labelMessaggio.setText(a); }
-	public void setContenuto2(String a) { this.contenuto1=a; }
-	public String getContenuto1() { return labelMessaggio.getText(); }
-	public String getContenuto2() { return contenuto1; }
+	public void setContenuto1(String a) { 
+		this.labelMessaggio.setText(a); 
+	}
 	
+	public void setContenuto2(String a) { 
+		this.contenuto1=a; 
+	}
 	
+	public String getContenuto1() { 
+		return labelMessaggio.getText(); 
+	}
+	
+	public String getContenuto2() { 
+		return contenuto1; 
+	}
+	
+	public void apriFinestra() {
+		this.setVisible(true);
+	}
+	
+	public void chiudiFinestra() {
+		this.setVisible(false);
+	}
 }
