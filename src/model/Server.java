@@ -15,7 +15,7 @@ public class Server {
 	private BufferedWriter output,dalServer;
 	private PrintStream alClient;
 	private FinestraClient finestra1;
-	private OttenitoreCoseFinestraIniziale ottieni1;
+	private OttenitoreCoseFinestraIniziale ottienicose;
 	
 	private int vittorieServer=0, vittorieClient=0;
     private String rispostaServer, elementoEssereServer, elementoEssereGiocatore, rispostaGiocatore;
@@ -41,7 +41,7 @@ public class Server {
 		try {
 			// port (20000): se = 0 sceglie la prima porta libera
 			// backlog (5): lunghezza massima della coda delle richieste di connection
-			server = new ServerSocket(ottieni1.portaConnessione1(), 5); // DatagramSocket per connessioni UDP
+			server = new ServerSocket(5); // DatagramSocket per connessioni UDP
 			System.out.println("Server attivo");
 			System.out.println(server.getInetAddress());
 			connection = server.accept();
@@ -201,7 +201,7 @@ public class Server {
         		rispostaGiocatore=input.readLine();
         		toccaA=!toccaA;
         		
-        		if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()).getValore() == oggettochesie.valueOf(rispostaServer.toUpperCase()).getValore()) {
+        		if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()) == oggettochesie.valueOf(rispostaServer.toUpperCase())) {
         			System.out.println("\nParreggio");
         			output.write("Parreggio");
         			

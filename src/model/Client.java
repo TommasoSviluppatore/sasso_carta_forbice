@@ -10,13 +10,13 @@ public class Client {
 	private BufferedReader dalServer; 
 	private PrintStream alServer; // Scrive bytes mentre PrintWriter scrive caratteri 
 	private BufferedReader tastiera;
-	private OttenitoreCoseFinestraIniziale ottieni1;
+	private OttenitoreCoseFinestraIniziale ottienicose;
 	
 	public Client() { 
 		tastiera = new BufferedReader(new InputStreamReader(System.in)); 
 		
 		try {
-			connessione = new Socket(ottieni1.indirizzoConnesione1(), ottieni1.portaConnessione1()); 
+			connessione = new Socket(ottienicose.indirizzoConnesione(), ottienicose.portaConnessione()); 
 			dalServer = new BufferedReader(new InputStreamReader(connessione.getInputStream())); 
 			alServer = new PrintStream(connessione.getOutputStream()); 
 			} catch (IOException e) { e.printStackTrace(); } 
