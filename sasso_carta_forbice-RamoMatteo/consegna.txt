@@ -1,0 +1,16 @@
+Esercitazione Java
+Socket e architettura Client – Server
+
+Realizzare un’applicazione C/S in cui il programma server gestisce un elenco di contatti telefonici.
+Ogni programma client si collega al server, comunica il contatto e ottiene come risposta il contatto completo del numero di telefono.
+
+Se il contatto non esiste viene inviato dal server un messaggio di contatto non trovato.
+
+La rubrica telefonica è memorizzata in un file agenda (in alternativa può essere usato un ArrayList), che supponiamo già disponibile e che contiene per ogni riga un nome e un numero di telefono separati dal punto e virgola.
+
+Esempio File agenda
+Mario;02672727
+Bianca;068382928
+Francesca;33877778899
+
+con file
