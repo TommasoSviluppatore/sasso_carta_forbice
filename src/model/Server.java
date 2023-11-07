@@ -129,7 +129,7 @@ public class Server {
     			
     			
     		}else if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()).getValore() > oggettochesie.valueOf(rispostaServer.toUpperCase()).getValore()){
-    			System.out.println("il giocatore 2 "/*giocatore*/+"ha accumulato un punto");
+    			System.out.println("il giocatore 2 "/*giocatoree*/+"ha accumulato un punto");
     			output.write("il giocatore 2 \"/*client*/+\"ha accumulato un punto");
     			vittorieClient++;
     			
