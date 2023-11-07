@@ -6,7 +6,7 @@ import java.util.*;
 
 import model.TCPBasic_Server;
 import view.FinestraClient;
-import control.OttenitoreCoseFinestraIniziale;
+import control.CollegamentoDaFinestraACodice;
 
 public class Server {
 	private ServerSocket server;
@@ -15,7 +15,7 @@ public class Server {
 	private BufferedWriter output,dalServer;
 	private PrintStream alClient;
 	private FinestraClient finestra1;
-	private OttenitoreCoseFinestraIniziale ottienicose;
+	private CollegamentoDaFinestraACodice ottienicose;
 	
 	private int vittorieServer=0, vittorieClient=0;
     private String rispostaServer, elementoEssereServer, elementoEssereGiocatore, rispostaGiocatore;

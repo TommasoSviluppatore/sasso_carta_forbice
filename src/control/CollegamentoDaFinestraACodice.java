@@ -5,13 +5,13 @@ import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
 
-public class OttenitoreCoseFinestraGioco implements ActionListener{
+public class CollegamentoDaFinestraACodice implements ActionListener{
 	
 	private FinestraClient finestra;
 	private String mossa_avversario;
 	
 	
-	public OttenitoreCoseFinestraGioco(FinestraClient frame) {
+	public CollegamentoDaFinestraACodice(FinestraClient frame) {
 		finestra.registraEvento(this);
 	}
 	
@@ -29,4 +29,14 @@ public class OttenitoreCoseFinestraGioco implements ActionListener{
 	public String getMossaAvversario() {
 		return mossa_avversario;
 	}
+	
+	
+	public String indirizzoConnesione() {
+		return "127.0.0.1";
+	}
+	
+	public int portaConnessione() {
+		return 20000;
+	}
+
 }
