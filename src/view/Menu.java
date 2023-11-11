@@ -1,5 +1,6 @@
 package view;
 
+//da fare il passaggio in finestra da quesra a quella di gioco, da mettere
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -9,13 +10,14 @@ import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import control.OttenitoreCose;
+import control.CollegamentoDaFinestraACodice;
 
 import javax.swing.border.BevelBorder;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import javax.swing.JTextField;
 
 public class Menu extends JFrame {
 
@@ -26,6 +28,9 @@ public class Menu extends JFrame {
 	private JLabel manoForbice;
 	private JLabel manoSasso;
 	private JLabel manoForbice_1;
+	private JTextField portaIP;
+	private JTextField indirozzoIP;
+	
 
 	/**
 	 * Launch the application.
@@ -80,15 +85,33 @@ public class Menu extends JFrame {
 		contentPane.add(manoForbice);
 		
 		manoSasso = new JLabel("");
-		manoSasso.setBounds(185, 0, 129, 88);
+		manoSasso.setBounds(186, 0, 129, 88);
 		contentPane.add(manoSasso);
 		
 		manoForbice_1 = new JLabel("");
 		manoForbice_1.setBounds(401, 126, 113, 127);
 		contentPane.add(manoForbice_1);
+		
+		portaIP = new JTextField();
+		portaIP.setBounds(89, 28, 138, 36);
+		contentPane.add(portaIP);
+		portaIP.setColumns(10);
+		
+		indirozzoIP = new JTextField();
+		indirozzoIP.setColumns(10);
+		indirozzoIP.setBounds(237, 28, 138, 36);
+		contentPane.add(indirozzoIP);
+		
+		JLabel ipIndirizzoScelta = new JLabel("Indirizzo ip");
+		ipIndirizzoScelta.setBounds(130, 3, 72, 14);
+		contentPane.add(ipIndirizzoScelta);
+		
+		JLabel PortaScelta = new JLabel("Porta");
+		PortaScelta.setBounds(279, 3, 72, 14);
+		contentPane.add(PortaScelta);
 	}
 	
-	public void registraEvento(OttenitoreCose ottenitoreCose) {
+	public void registraEvento(CollegamentoDaFinestraACodice ottenitoreCose) {
 		this.btnIniziaGioco.addActionListener(ottenitoreCose);
 	}
 	
@@ -102,5 +125,17 @@ public class Menu extends JFrame {
 	
 	public void finestraMenuAperta() {
 		this.setVisible(true);
+	}
+	
+	public String getIndirizzoIPCUston() {
+		return indirozzoIP.toString();
+	}
+	
+	public String getIndirizzoPortaCUston() {
+		return portaIP.toString();
+	}
+	
+	public JButton getIniziaGioco() {
+		return btnIniziaGioco;
 	}
 }

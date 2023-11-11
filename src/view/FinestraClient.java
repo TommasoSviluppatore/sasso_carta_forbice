@@ -6,7 +6,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.io.*;
 import javax.imageio.*;
-import control.OttenitoreCoseFinestraGioco;
+import control.CollegamentoDaFinestraACodice;
 
 public class FinestraClient extends JFrame {
 
@@ -91,7 +91,7 @@ public class FinestraClient extends JFrame {
 		return btnForbice;
 	}
 	
-	public void registraEvento(OttenitoreCoseFinestraGioco controller) {
+	public void registraEvento(CollegamentoDaFinestraACodice controller) {
 		// TODO Auto-generated method stub
 		this.btnCarta.addActionListener(controller);
 		this.btnSasso.addActionListener(controller);

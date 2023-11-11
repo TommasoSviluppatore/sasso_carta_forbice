@@ -3,20 +3,20 @@ package model;
 import java.io.*; 
 import java.net.*; 
 import java.util.*;
-import control.OttenitoreCoseFinestraIniziale;
+import control.CollegamentoDaFinestraACodice;
 
 public class Client { 
 	private Socket connessione; 
 	private BufferedReader dalServer; 
 	private PrintStream alServer; // Scrive bytes mentre PrintWriter scrive caratteri 
 	private BufferedReader tastiera;
-	private OttenitoreCoseFinestraIniziale ottienicose;
+	private CollegamentoDaFinestraACodice ottienicose;
 	
 	public Client() { 
 		tastiera = new BufferedReader(new InputStreamReader(System.in)); 
 		
 		try {
-			connessione = new Socket(ottienicose.indirizzoConnesione(), ottienicose.portaConnessione()); 
+			connessione = new Socket("127.0.0.1", 58966); 
 			dalServer = new BufferedReader(new InputStreamReader(connessione.getInputStream())); 
 			alServer = new PrintStream(connessione.getOutputStream()); 
 			} catch (IOException e) { e.printStackTrace(); } 
