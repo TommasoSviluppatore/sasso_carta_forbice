@@ -134,4 +134,8 @@ public class Menu extends JFrame {
 	public String getIndirizzoPortaCUston() {
 		return portaIP.toString();
 	}
+	
+	public JButton getIniziaGioco() {
+		return btnIniziaGioco;
+	}
 }

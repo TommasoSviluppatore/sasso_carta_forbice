@@ -1,6 +1,7 @@
 package control;
 
 import view.FinestraClient;
+import view.Menu;
 import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
@@ -8,6 +9,7 @@ import javax.swing.*;
 public class CollegamentoDaFinestraACodice implements ActionListener{
 	
 	private FinestraClient finestra;
+	private Menu menu;
 	private String mossa_avversario;
 	
 	
@@ -24,6 +26,9 @@ public class CollegamentoDaFinestraACodice implements ActionListener{
 		}
 		if(e.getSource() == finestra.ritornaSasso()){
 			mossa_avversario="sasso";
+		}
+		if(e.getSource()==menu.getIniziaGioco()) {
+			menu.finestraMenuChiusa();
 		}
 	}
 	public String getMossaAvversario() {
