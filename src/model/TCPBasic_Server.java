@@ -4,7 +4,7 @@ import java.io.*;
 import java.net.*; 
 import java.util.*;
 
-import control.OttenitoreCose;
+import control.OttenitoreCoseFinestraGioco;
 import view.FinestraClient;
 
 public class TCPBasic_Server {
@@ -14,7 +14,7 @@ public class TCPBasic_Server {
 	private BufferedReader input;
 	private BufferedWriter output;
 	private FinestraClient interfaccia;
-	private OttenitoreCose ricavitoreCose;
+	private OttenitoreCoseFinestraGioco ricavitoreCose;
 	
 	private int vittorieServer=0, vittorieClient=0;
     private String rispostaServer, elementoEssereServer, elementoEssereGiocatore, rispostaGiocatore;

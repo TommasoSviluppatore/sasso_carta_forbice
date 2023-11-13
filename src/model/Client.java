@@ -3,34 +3,28 @@ package model;
 import java.io.*; 
 import java.net.*; 
 import java.util.*;
+import control.OttenitoreCoseFinestraIniziale;
 
 public class Client { 
 	private Socket connessione; 
-	private BufferedReader dalServer; 
-	private PrintStream alServer; // Scrive bytes mentre PrintWriter scrive caratteri 
-	private BufferedReader tastiera;
+	private ObjectInputStream input; 
+	private ObjectOutputStream output;
 	
-	public Client() { 
-		tastiera = new BufferedReader(new InputStreamReader(System.in)); 
-		try { 
-			System.out.println("Inserire l'indirizzo del server"); 
-			String indirizzo = tastiera.readLine(); 
-			connessione = new Socket(indirizzo, 20000); 
-			dalServer = new BufferedReader(new InputStreamReader(connessione.getInputStream())); 
-			alServer = new PrintStream(connessione.getOutputStream()); 
-			} catch (IOException e) { e.printStackTrace(); } 
+	public Client() { 	
+		try {
+			connessione = new Socket("127.0.0.1", 50000); 
+			this.input=new ObjectInputStream(connessione.getInputStream());
+			this.output=new ObjectOutputStream(connessione.getOutputStream());
+		} catch (IOException e) { e.printStackTrace(); } 
 	}
 	
-	public void conversazione() { 
+	public void conversazione(String sceltaGiocatore) { 
 		String messaggio = ""; 
-		tastiera = new BufferedReader(new InputStreamReader(System.in)); 
+		
 		try { 
 			while(!messaggio.equals("fine")) { 
 				
-				
-				
-				
-				
+							
 			} 
 			connessione.close(); 
 			} catch(IOException e) { e.printStackTrace(); }

@@ -10,6 +10,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import control.OttenitoreCose;
+import control.OttenitoreCoseFinestraIniziale;
 
 import javax.swing.border.BevelBorder;
 import java.awt.Color;
@@ -59,7 +60,7 @@ public class Menu extends JFrame {
 		
 		btnIniziaGioco = new JButton("Inizia Partita");
 		btnIniziaGioco.setFont(new Font("Tahoma", Font.PLAIN, 34));
-		btnIniziaGioco.setBounds(141, 108, 221, 103);
+		btnIniziaGioco.setBounds(148, 93, 221, 103);
 		contentPane.add(btnIniziaGioco);
 		
 		lblTitolo = new JLabel("Sasso/Carta/Forbice");
@@ -72,7 +73,7 @@ public class Menu extends JFrame {
 		lblCaricamento = new JLabel("Caricamento...");
 		lblCaricamento.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		lblCaricamento.setHorizontalAlignment(SwingConstants.CENTER);
-		lblCaricamento.setBounds(141, 114, 221, 99);
+		lblCaricamento.setBounds(148, 99, 221, 99);
 		contentPane.add(lblCaricamento);
 		
 		manoForbice = new JLabel("");
@@ -88,11 +89,11 @@ public class Menu extends JFrame {
 		contentPane.add(manoForbice_1);
 	}
 	
-	public void registraEvento(OttenitoreCose ottenitoreCose) {
+	public void registraEvento(OttenitoreCoseFinestraIniziale ottenitoreCose) {
 		this.btnIniziaGioco.addActionListener(ottenitoreCose);
 	}
 	
-	public void cambiaTesto() {
+	public void mostraCaricamento() {
 		this.btnIniziaGioco.setVisible(false);
 	}
 	
