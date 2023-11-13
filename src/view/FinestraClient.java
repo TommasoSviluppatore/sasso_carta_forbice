@@ -2,11 +2,11 @@ package view;
 
 import java.awt.*;
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
+import javax.swing.border.*;
 import java.io.*;
 import javax.imageio.*;
-import control.CollegamentoDaFinestraACodice;
+
+import control.CollegamentoFinestraGioco;
 
 public class FinestraClient extends JFrame {
 
@@ -91,7 +91,7 @@ public class FinestraClient extends JFrame {
 		return btnForbice;
 	}
 	
-	public void registraEvento(CollegamentoDaFinestraACodice controller) {
+	public void registraEvento(CollegamentoFinestraGioco controller) {
 		// TODO Auto-generated method stub
 		this.btnCarta.addActionListener(controller);
 		this.btnSasso.addActionListener(controller);

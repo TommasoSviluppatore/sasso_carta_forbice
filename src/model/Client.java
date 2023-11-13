@@ -3,14 +3,14 @@ package model;
 import java.io.*; 
 import java.net.*; 
 import java.util.*;
-import control.CollegamentoDaFinestraACodice;
+import control.CollegamentoFinestraMenu;
 
 public class Client { 
 	private Socket connessione; 
 	private BufferedReader dalServer; 
 	private PrintStream alServer; // Scrive bytes mentre PrintWriter scrive caratteri 
 	private BufferedReader tastiera;
-	private CollegamentoDaFinestraACodice ottienicose;
+	private CollegamentoFinestraMenu ottienicose;
 	
 	public Client() { 
 		tastiera = new BufferedReader(new InputStreamReader(System.in)); 

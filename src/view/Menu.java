@@ -3,33 +3,18 @@ package view;
 //da fare il passaggio in finestra da quesra a quella di gioco, da mettere
 import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JButton;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.*;
+import javax.swing.border.*;
+import java.awt.*;
 
-import control.CollegamentoDaFinestraACodice;
-
-import javax.swing.border.BevelBorder;
-import java.awt.Color;
-import java.awt.Font;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import javax.swing.JTextField;
+import control.CollegamentoFinestraMenu;
 
 public class Menu extends JFrame {
 
 	private JPanel contentPane;
 	private JButton btnIniziaGioco;
-	private JLabel lblTitolo;
-	private JLabel lblCaricamento;
-	private JLabel manoForbice;
-	private JLabel manoSasso;
-	private JLabel manoForbice_1;
-	private JTextField portaIP;
-	private JTextField indirozzoIP;
+	private JLabel lblTitolo,lblCaricamento,manoForbice,manoSasso, manoForbice_1;
+	private JTextField portaIP, indirozzoIP;
 	
 
 	/**
@@ -111,7 +96,7 @@ public class Menu extends JFrame {
 		contentPane.add(PortaScelta);
 	}
 	
-	public void registraEvento(CollegamentoDaFinestraACodice ottenitoreCose) {
+	public void registraEvento(CollegamentoFinestraMenu ottenitoreCose) {
 		this.btnIniziaGioco.addActionListener(ottenitoreCose);
 	}
 	
@@ -131,7 +116,7 @@ public class Menu extends JFrame {
 		return indirozzoIP.toString();
 	}
 	
-	public String getIndirizzoPortaCUston() {
+	public String getIndirizzoPortaCustom() {
 		return portaIP.toString();
 	}
 	

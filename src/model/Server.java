@@ -6,7 +6,7 @@ import java.util.*;
 
 import model.TCPBasic_Server;
 import view.FinestraClient;
-import control.CollegamentoDaFinestraACodice;
+import control.CollegamentoFinestraMenu;
 
 public class Server {
 	private ServerSocket server;
@@ -15,7 +15,7 @@ public class Server {
 	private BufferedWriter output,dalServer;
 	private PrintStream alClient;
 	private FinestraClient finestra1;
-	private CollegamentoDaFinestraACodice ottienicose;
+	private CollegamentoFinestraMenu ottienicose;
 	
 	private int vittorieServer=0, vittorieClient=0;
     private String rispostaServer, elementoEssereServer, elementoEssereGiocatore, rispostaGiocatore;
@@ -50,6 +50,7 @@ public class Server {
 		} catch (IOException e) {e.printStackTrace();}
 	}
 	
+	//questa parte bisogna riscriverla perché è duplicata con il file partita
 	public void conversazione() {
 		
 		try {
