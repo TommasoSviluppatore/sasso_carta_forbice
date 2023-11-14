@@ -1,20 +1,25 @@
 package view;
 
-//da fare il passaggio in finestra da quesra a quella di gioco, da mettere
-import java.awt.EventQueue;
-
+import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
 
 import control.CollegamentoFinestraMenu;
+import view.FinestraClient;
 
+//fare due finestre 
 public class Menu extends JFrame {
 
 	private JPanel contentPane;
 	private JButton btnIniziaGioco;
 	private JLabel lblTitolo,lblCaricamento,manoForbice,manoSasso, manoForbice_1;
 	private JTextField portaIP, indirozzoIP;
+	private boolean continua=true;
+	private FinestraClient giocoMora;
+	
+	public boolean getContinua() {return this.continua;}
 	
 
 	/**
@@ -49,8 +54,16 @@ public class Menu extends JFrame {
 		
 		btnIniziaGioco = new JButton("Inizia Partita");
 		btnIniziaGioco.setFont(new Font("Tahoma", Font.PLAIN, 34));
-		btnIniziaGioco.setBounds(141, 108, 221, 103);
+		btnIniziaGioco.setBounds(110, 108, 269, 103);
 		contentPane.add(btnIniziaGioco);
+		
+		btnIniziaGioco.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				continua=false;
+				giocoMora.main(null);
+			}
+		});
 		
 		lblTitolo = new JLabel("Sasso/Carta/Forbice");
 		lblTitolo.setForeground(Color.BLUE);
@@ -65,35 +78,25 @@ public class Menu extends JFrame {
 		lblCaricamento.setBounds(141, 114, 221, 99);
 		contentPane.add(lblCaricamento);
 		
-		manoForbice = new JLabel("");
-		manoForbice.setBounds(0, 126, 113, 127);
-		contentPane.add(manoForbice);
-		
-		manoSasso = new JLabel("");
-		manoSasso.setBounds(186, 0, 129, 88);
-		contentPane.add(manoSasso);
-		
-		manoForbice_1 = new JLabel("");
-		manoForbice_1.setBounds(401, 126, 113, 127);
-		contentPane.add(manoForbice_1);
-		
-		portaIP = new JTextField();
-		portaIP.setBounds(89, 28, 138, 36);
+		portaIP = new JTextField("8081");
+		portaIP.setBounds(241, 22, 138, 36);
 		contentPane.add(portaIP);
 		portaIP.setColumns(10);
 		
-		indirozzoIP = new JTextField();
+		indirozzoIP = new JTextField("127.0.0.1");
 		indirozzoIP.setColumns(10);
-		indirozzoIP.setBounds(237, 28, 138, 36);
+		indirozzoIP.setBounds(91, 22, 138, 36);
 		contentPane.add(indirozzoIP);
 		
-		JLabel ipIndirizzoScelta = new JLabel("Indirizzo ip");
-		ipIndirizzoScelta.setBounds(130, 3, 72, 14);
-		contentPane.add(ipIndirizzoScelta);
-		
 		JLabel PortaScelta = new JLabel("Porta");
-		PortaScelta.setBounds(279, 3, 72, 14);
+		PortaScelta.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 15));
+		PortaScelta.setBounds(290, 3, 51, 22);
 		contentPane.add(PortaScelta);
+		
+		JLabel ipIndirizzoScelta = new JLabel("Indirizzo IP");
+		ipIndirizzoScelta.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 15));
+		ipIndirizzoScelta.setBounds(122, 0, 95, 22);
+		contentPane.add(ipIndirizzoScelta);
 	}
 	
 	public void registraEvento(CollegamentoFinestraMenu ottenitoreCose) {
@@ -106,13 +109,19 @@ public class Menu extends JFrame {
 	
 	public void finestraMenuChiusa() {
 		this.setVisible(false);
+		//JFrame finestraMenu = (JFrame) SwingUtilities.getWindowAncestor(menu);
+		this.dispose();
+		view.FinestraClient.main(null);
+		giocoMora.main(null);
+		
+		//new Thread((Runnable) new view.FinestraClient()).start();
 	}
 	
 	public void finestraMenuAperta() {
 		this.setVisible(true);
 	}
 	
-	public String getIndirizzoIPCUston() {
+	public String getIndirizzoIPCustom() {
 		return indirozzoIP.toString();
 	}
 	

@@ -50,11 +50,10 @@ public class Server {
 		} catch (IOException e) {e.printStackTrace();}
 	}
 	
-	//questa parte bisogna riscriverla perché è duplicata con il file partita
+	//questa sezione non funziona, correggere
 	public void conversazione() {
 		
 		try {
-			
 		System.out.println("\nSERVER ATTIVO");
         server = new ServerSocket(8081);
         
@@ -233,6 +232,7 @@ public class Server {
 
     } catch (IOException e) {
         e.printStackTrace();
+        System.out.println("qualche errore è successo");
     }
 		
 	}

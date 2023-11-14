@@ -3,8 +3,6 @@ package model;
 import java.io.*; 
 import java.net.*; 
 import java.util.*;
-
-import control.CollegamentoFinestraMenu;
 import view.FinestraClient;
 
 public class TCPBasic_Server {

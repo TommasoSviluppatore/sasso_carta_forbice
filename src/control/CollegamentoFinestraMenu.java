@@ -1,9 +1,10 @@
 package control;
 
-import view.Menu;
 import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
+
+import view.Menu;
 
 public class CollegamentoFinestraMenu implements ActionListener{
 	
@@ -25,7 +26,7 @@ public class CollegamentoFinestraMenu implements ActionListener{
 	}
 	
 	public String indirizzoConnesione() {
-		return menu.getIndirizzoIPCUston();
+		return menu.getIndirizzoIPCustom();
 	}
 	
 	public int portaConnessione() {
