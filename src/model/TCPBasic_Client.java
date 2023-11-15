@@ -6,6 +6,7 @@ import java.util.*;
 
 public class TCPBasic_Client {
 	
+	/**<p>supporto al codice client generale</p>*/
 	
 	private Socket connection=null;
 	private BufferedReader input;

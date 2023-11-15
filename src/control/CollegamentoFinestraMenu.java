@@ -8,6 +8,7 @@ import view.Menu;
 
 public class CollegamentoFinestraMenu implements ActionListener{
 	
+	/**<p>questa controller è l'aiutante della finestra menu*/
 	private Menu menu;
 	private String mossa_avversario;
 	

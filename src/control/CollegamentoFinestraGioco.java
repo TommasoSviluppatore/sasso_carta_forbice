@@ -8,10 +8,11 @@ import javax.swing.*;
 import control.CollegamentoFinestraMenu;
 
 public class CollegamentoFinestraGioco implements ActionListener {
+	 
 
 	private FinestraClient finestra;
 	private CollegamentoFinestraMenu menuOpz;
-	private String mossa_avversario;
+	private String mossaAvversario;
 
 	public CollegamentoFinestraGioco(FinestraClient frame) {
 		finestra.registraEvento(this);
@@ -19,18 +20,22 @@ public class CollegamentoFinestraGioco implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == finestra.ritornaCarta()) {
-			mossa_avversario = "carta";
+			mossaAvversario = "carta";
 		}
 		if (e.getSource() == finestra.ritornaForbice()) {
-			mossa_avversario = "forbice";
+			mossaAvversario = "forbice";
 		}
 		if (e.getSource() == finestra.ritornaSasso()) {
-			mossa_avversario = "sasso";
+			mossaAvversario = "sasso";
 		}
 	}
 	
 	public void impostaScritte(String a) {
 		finestra.setContenuto1(a);
+	}
+	
+	public String getMossa() {
+		return mossaAvversario;
 	}
 
 }

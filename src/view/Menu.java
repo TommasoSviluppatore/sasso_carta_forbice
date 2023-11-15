@@ -8,9 +8,13 @@ import java.awt.*;
 
 import control.CollegamentoFinestraMenu;
 import view.FinestraClient;
+import model.Client;
+import model.Server;
 
 //fare due finestre 
 public class Menu extends JFrame {
+	/**<p>questa finestra è il menu, ottiene
+	 * l'indirizzo ip e la porta</p>*/
 
 	private JPanel contentPane;
 	private JButton btnIniziaGioco;
@@ -18,6 +22,8 @@ public class Menu extends JFrame {
 	private JTextField portaIP, indirozzoIP;
 	private boolean continua=true;
 	private FinestraClient giocoMora;
+	private Client proseguigioco;
+	private Server gestoreGioco;
 	
 	public boolean getContinua() {return this.continua;}
 	
@@ -60,7 +66,9 @@ public class Menu extends JFrame {
 		btnIniziaGioco.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				continua=false;
+				/*continua=false;*/
+				proseguigioco.puoiProseguire(true);
+				gestoreGioco.puoiProseguire(true);
 				giocoMora.main(null);
 			}
 		});

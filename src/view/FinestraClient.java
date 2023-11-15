@@ -90,6 +90,9 @@ public class FinestraClient extends JFrame {
 		return btnForbice;
 	}
 	
+	/**<p>creatore dell'action listener su "collegamentofinestragioco"</p>
+	 * @param controller
+	 */
 	public void registraEvento(CollegamentoFinestraGioco controller) {
 		// TODO Auto-generated method stub
 		this.btnCarta.addActionListener(controller);

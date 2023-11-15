@@ -5,6 +5,8 @@ import java.net.*;
 import java.util.*;
 import view.FinestraClient;
 
+/**<p>funzionalità di aiuto al server</p>*/
+
 public class TCPBasic_Server {
 	
 	private ServerSocket server;
