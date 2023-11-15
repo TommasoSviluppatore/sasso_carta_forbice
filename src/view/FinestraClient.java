@@ -14,8 +14,6 @@ public class FinestraClient extends JFrame {
 	private JLabel labelMessaggio;
 	private JButton btnForbice, btnSasso, btnCarta;
 	
-	private String contenuto1, contenuto2;
-	
 	/**
 	 * Launch the application.
 	 */
@@ -74,8 +72,9 @@ public class FinestraClient extends JFrame {
 		pannelloOutput.setLayout(null);
 		
 		labelMessaggio = new JLabel("Benvenuto! Seleziona la mossa da giocare");
+		labelMessaggio.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 15));
 		labelMessaggio.setHorizontalAlignment(SwingConstants.CENTER);
-		labelMessaggio.setBounds(12, 53, 400, 15);
+		labelMessaggio.setBounds(0, 33, 412, 33);
 		pannelloOutput.add(labelMessaggio);
 	}
 	
@@ -102,16 +101,8 @@ public class FinestraClient extends JFrame {
 		this.labelMessaggio.setText(a); 
 	}
 	
-	public void setContenuto2(String a) { 
-		this.contenuto1=a; 
-	}
-	
 	public String getContenuto1() { 
 		return labelMessaggio.getText(); 
-	}
-	
-	public String getContenuto2() { 
-		return contenuto1; 
 	}
 	
 	public void apriFinestra() {

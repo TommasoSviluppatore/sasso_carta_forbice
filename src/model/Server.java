@@ -7,6 +7,7 @@ import java.util.*;
 import model.TCPBasic_Server;
 import view.FinestraClient;
 import control.CollegamentoFinestraMenu;
+import control.CollegamentoFinestraGioco;
 
 public class Server {
 	private ServerSocket server;
@@ -16,10 +17,12 @@ public class Server {
 	private PrintStream alClient;
 	private FinestraClient finestra1;
 	private CollegamentoFinestraMenu ottienicose;
+	private CollegamentoFinestraGioco ottienigiococose;
 	
 	private int vittorieServer=0, vittorieClient=0;
     private String rispostaServer, elementoEssereServer, elementoEssereGiocatore, rispostaGiocatore;
     private boolean toccaA=false;
+    private final int numeromosse=9;
 	
 	public enum oggettochesie {
 	    SASSO(1),
@@ -140,7 +143,9 @@ public class Server {
         	
         }
         
-        while (true) {
+        for(int mosse=0;mosse<numeromosse;mosse++) {
+        	
+        	try { Thread.sleep(mosse); } catch (InterruptedException e) { e.printStackTrace(); }
         	
         	//INIZIO PROGRAMMA
             String letta="" ;//= input.readLine();
@@ -171,18 +176,21 @@ public class Server {
         		if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()).getValore() == oggettochesie.valueOf(rispostaServer.toUpperCase()).getValore()) {
         			System.out.println("\nParreggio");
         			output.write("Parreggio");
+        			ottienigiococose.impostaScritte("vi siete scontrati e siete morti entrambi");
         			
         			
         		}else if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()).getValore() < oggettochesie.valueOf(rispostaServer.toUpperCase()).getValore()) {
         			System.out.println("il giocatore 1 "/*server*/+"ha accumulato un punto");
         			output.write("il giocatore 1 \"/*server*/+\"ha accumulato un punto");
         			vittorieServer++;
+        			ottienigiococose.impostaScritte("Nah");
         			
         			
         		}else if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()).getValore() > oggettochesie.valueOf(rispostaServer.toUpperCase()).getValore()){
         			System.out.println("il giocatore 2 "/*giocatore*/+"ha accumulato un punto");
         			output.write("il giocatore 2 \"/*client*/+\"ha accumulato un punto");
         			vittorieClient++;
+        			ottienigiococose.impostaScritte("hai fatto punto!");
         			
         		}else{
         			output.write("errore generico da ignorare");
@@ -204,18 +212,21 @@ public class Server {
         		if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()) == oggettochesie.valueOf(rispostaServer.toUpperCase())) {
         			System.out.println("\nParreggio");
         			output.write("Parreggio");
+        			ottienigiococose.impostaScritte("vi siete scontrati e siete morti entrambi");
         			
         			
         		}else if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()).getValore() < oggettochesie.valueOf(rispostaServer.toUpperCase()).getValore()) {
         			System.out.println("il giocatore 1 "/*server*/+"ha accumulato un punto");
         			output.write("il giocatore 1 \"/*server*/+\"ha accumulato un punto");
         			vittorieServer++;
+        			ottienigiococose.impostaScritte("Nah");
         			
         			
         		}else if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()).getValore() > oggettochesie.valueOf(rispostaServer.toUpperCase()).getValore()){
         			System.out.println("il giocatore 2 "/*giocatore*/+"ha accumulato un punto");
         			output.write("il giocatore 2 \"/*client*/+\"ha accumulato un punto");
         			vittorieClient++;
+        			ottienigiococose.impostaScritte("hai fatto punto");
         			
         		}else{
         			output.write("errore generico da ignorare");
@@ -224,6 +235,26 @@ public class Server {
             }
         }
 
+        if(vittorieClient>vittorieServer) {
+        	output.write("\nil giocatore 2 ha vinto la partita");
+        	System.out.println("\nhai perso!");
+        	ottienigiococose.impostaScritte("hai vinto, complimenti!, hai fatto "+vittorieClient+" punti!");
+        }
+        else if(vittorieServer>vittorieClient) {
+        	output.write("\nil giocatore 1 ha vinto la partita");
+        	System.out.println("\nhai vinto!");
+        	ottienigiococose.impostaScritte("hai perso, il giocatore 1 ha vinto la partita , con "+vittorieServer+" punti!");
+        }
+        else if(vittorieClient==vittorieServer) {
+        	output.write("\npareggio");
+        	System.out.println("\npareggio");
+        	ottienigiococose.impostaScritte("pareggio");
+        }
+        else {
+        	output.write("\nerrore, altro giorno, altre roulette russe!");
+        	System.out.println("\nerrore, altro giorno, altre roulette russe!");
+        	ottienigiococose.impostaScritte("errore, altro giorno, altre roulette russe!");
+        }
         input.close();
         output.close();
 

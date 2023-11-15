@@ -28,17 +28,9 @@ public class CollegamentoFinestraGioco implements ActionListener {
 			mossa_avversario = "sasso";
 		}
 	}
-
-	public String getMossaAvversario() {
-		return mossa_avversario;
-	}
-
-	public String indirizzoConnesione() {
-		return menuOpz.indirizzoConnesione();
-	}
-
-	public int portaConnessione() {
-		return menuOpz.portaConnessione();
+	
+	public void impostaScritte(String a) {
+		finestra.setContenuto1(a);
 	}
 
 }
