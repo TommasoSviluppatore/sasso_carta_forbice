@@ -3,9 +3,9 @@ package model;
 import java.io.*; 
 import java.net.*; 
 import java.util.*;
-
-import control.OttenitoreCoseFinestraGioco;
 import view.FinestraClient;
+
+/**<p>funzionalità di aiuto al server</p>*/
 
 public class TCPBasic_Server {
 	
@@ -13,29 +13,6 @@ public class TCPBasic_Server {
 	private Socket connection;
 	private BufferedReader input;
 	private BufferedWriter output;
-	private FinestraClient interfaccia;
-	private OttenitoreCoseFinestraGioco ricavitoreCose;
-	
-	private int vittorieServer=0, vittorieClient=0;
-    private String rispostaServer, elementoEssereServer, elementoEssereGiocatore, rispostaGiocatore;
-    private boolean toccaA=false;
-	
-	public enum oggettochesie {
-	    SASSO(1),
-	    FORBICE(2),
-	    CARTA(3);
-
-	    private final int valore;
-
-	    oggettochesie(int valore) {
-	        this.valore = valore;
-	    }
-
-	    public int getValore() {
-	        return valore;
-	    }
-	}
-	
 	public TCPBasic_Server(){
 		
 		try {
