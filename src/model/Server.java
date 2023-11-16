@@ -5,7 +5,6 @@ import java.net.*;
 import java.util.*;
 
 import model.TCPBasic_Server;
-import view.FinestraGioco;
 import control.CollegamentoFinestraMenu;
 import control.CollegamentoFinestraGioco;
 import model.Client;
@@ -16,7 +15,6 @@ public class Server {
 	private BufferedReader ricezioneDalClient;
 	private BufferedWriter invioAlClient;
 	
-	private FinestraGioco finestraGioco;
 	private CollegamentoFinestraMenu aiutanteAzioniMenu;
 	private CollegamentoFinestraGioco aiutanteAzioniGioco;
 	
