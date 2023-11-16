@@ -67,8 +67,8 @@ public class FinestraMenu extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				/*continua=false;*/
-				giocatoreOspitePartita.puoiProseguire(true);
 				giocatorePrimarioPartita.puoiProseguire(true);
+				giocatoreOspitePartita.puoiProseguire(true);
 				finestraGioco.main(null);
 			}
 		});

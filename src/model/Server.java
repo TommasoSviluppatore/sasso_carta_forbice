@@ -13,19 +13,19 @@ import model.Client;
 public class Server {
 	private ServerSocket server;
 	private Socket connection;
-	private BufferedReader input, dalClient;
-	private BufferedWriter output, dalServer;
-	private PrintStream alClient;
+	private BufferedReader ricezioneDalClient;
+	private BufferedWriter invioAlClient;
 	
 	private FinestraGioco finestraGioco;
 	private CollegamentoFinestraMenu aiutanteAzioniMenu;
 	private CollegamentoFinestraGioco aiutanteAzioniGioco;
 	
 	private int vittorieServer=0, vittorieClient=0;
-    private String rispostaServer, elementoEssereServer, elementoEssereGiocatore, rispostaGiocatore;
+    private String rispostaServer, mossaServer, mossaGiocatore, rispostaGiocatore;
     private boolean toccaA=false;
     private final int numeroMosse=9;
 	private boolean proseguiConGioco=false;
+	
 	
 	/**
 	 * <p>controllo del proseguimento, se il bottone nella pagina di menu,
@@ -92,16 +92,34 @@ public class Server {
 
         System.out.println("\n"+connection+"---------------\n");
 
-        input = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-        output = new BufferedWriter(new OutputStreamWriter(connection.getOutputStream()));
-        
-        /**<p>qui aspetta che il gioco inizi asperttando che nel menu 
-         * il bottone "inizia gioco" venga premuto</p>*/
-        while(!proseguiConGioco) {
-        	try { Thread.sleep(1000); } catch (InterruptedException e) { e.printStackTrace(); }
+        if (rispostaServer.compareTo("EXIT") == 0) {
+            invioAlClient.write("CLOSE");
+            invioAlClient.flush();
+            System.out.println("Chiusura del canale");
+            invioAlClient.close();
+            ricezioneDalClient.close();
+            return;
         }
         
         
+        ricezioneDalClient = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+        invioAlClient = new BufferedWriter(new OutputStreamWriter(connection.getOutputStream()));
+        
+        
+        /**<p>qui aspetta che il gioco inizi asperttando che nel menu 
+         * il bottone "inizia gioco" venga premuto</p>*/
+        while(!proseguiConGioco) { try { Thread.sleep(1000); } 
+        catch (InterruptedException e) { e.printStackTrace(); } }
+
+        
+        
+        invioAlClient.flush();
+        
+        
+    	//INIZIO PROGRAMMA
+        
+        ObjectInputStream versoIlServerOggetti=new ObjectInputStream(connection.getInputStream());
+        ObjectOutputStream versoIlClientOggetti=new ObjectOutputStream(connection.getOutputStream());
         /**<p>gestione del gioco in se, diviso in due parti:
          * la prima è per decidere se il giocatore o il server iniziano la 
          * partita e dopodiché c'è un ciclo finito di 20 turni dove il 
@@ -111,22 +129,7 @@ public class Server {
         System.out.println("Voi far fare la prima mossa al tuo avversario?");
         
         rispostaServer=System.console().readLine();
-        
 
-    	
-    	//INIZIO PROGRAMMA
-        String letta="" ;//= input.readLine();
-
-        if (letta.compareTo("EXIT") == 0) {
-            output.write("CLOSE");
-            output.flush();
-            System.out.println("Chiusura del canale");
-            return;
-        }
-
-        output.write(letta.toUpperCase() + "\n");
-        output.flush();
-      
         if(rispostaServer=="si") {
         	
         	//sostituisci la input readline del client con il ricevitore dell'interfaccia
@@ -163,17 +166,17 @@ public class Server {
         			vittorieClient++;
         			
         		}else{
-        			output.write("errore generico da ignorare");
+        			invioAlClient.write("errore generico da ignorare");
         			System.out.println("errore generico da ingnorare");
         		}
         		
         }else {
         	//mossa del server
     		System.out.println("prima mossa del server");
-    		output.write("Il server giocher� per primo");
+    		invioAlClient.write("Il server giocher� per primo");
     		rispostaServer=System.console().readLine();
 
-    		output.write("ora � il tuo turno, immetti la tua mossa");
+    		invioAlClient.write("ora � il tuo turno, immetti la tua mossa");
     		rispostaGiocatore=aiutanteAzioniGioco.getMossa();
     		toccaA=false;
     		
@@ -197,7 +200,7 @@ public class Server {
     			
     			
     		}else{
-    			output.write("errore generico da ignorare");
+    			invioAlClient.write("errore generico da ignorare");
     			System.out.println("errore generico da ingnorare");
     		}
         	
@@ -208,19 +211,18 @@ public class Server {
          * */
         for(int mosse=0;mosse<numeroMosse;mosse++) {
 
-            if (letta.compareTo("EXIT") == 0) {
-                output.write("CLOSE");
-                output.flush();
+
+            if (rispostaServer.compareTo("EXIT") == 0) {
+                invioAlClient.write("CLOSE");
+                invioAlClient.flush();
                 System.out.println("Chiusura del canale");
+                invioAlClient.close();
+                ricezioneDalClient.close();
                 return;
             }
-
-            output.write(letta.toUpperCase() + "\n");
-            output.flush();
         	
         	try { Thread.sleep(2000); } catch (InterruptedException e) { e.printStackTrace(); }
-            
-            String risposta=input.readLine();
+        	
            
             if(toccaA) {
             	//mossa del client
@@ -228,7 +230,7 @@ public class Server {
         		rispostaGiocatore=aiutanteAzioniGioco.getMossa();
 
         		System.out.println("mossa del server");
-        		output.write("mossa del server");
+        		invioAlClient.write("mossa del server");
         		rispostaServer=System.console().readLine();
         		toccaA=!toccaA;
         		
@@ -321,8 +323,8 @@ public class Server {
         	System.out.println("\nerrore, altro giorno, altre roulette russe!");
         	aiutanteAzioniGioco.impostaScritte("errore, altro giorno, altre roulette russe!");
         }
-        input.close();
-        output.close();
+        ricezioneDalClient.close();
+        invioAlClient.close();
 
         connection.close();
 
