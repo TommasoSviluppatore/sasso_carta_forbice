@@ -3,7 +3,7 @@ package model;
 import java.io.*; 
 import java.net.*; 
 import java.util.*;
-import view.FinestraClient;
+import view.FinestraGioco;
 
 /**<p>funzionalità di aiuto al server</p>*/
 

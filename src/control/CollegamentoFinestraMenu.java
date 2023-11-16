@@ -4,16 +4,16 @@ import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
 
-import view.Menu;
+import view.FinestraMenu;
 
 public class CollegamentoFinestraMenu implements ActionListener{
 	
-	/**<p>questa controller è l'aiutante della finestra menu*/
-	private Menu menu;
-	private String mossa_avversario;
+	/**<p>questa controller è l'aiutante della finestra menu</p>*/
+	private FinestraMenu menu;
+	private String mossaAvversario;
 	
 	
-	public CollegamentoFinestraMenu(Menu Menu) {
+	public CollegamentoFinestraMenu(FinestraMenu Menu) {
 		menu.registraEvento(this);
 	}
 	
@@ -23,7 +23,7 @@ public class CollegamentoFinestraMenu implements ActionListener{
 		}
 	}
 	public String getMossaAvversario() {
-		return mossa_avversario;
+		return mossaAvversario;
 	}
 	
 	public String indirizzoConnesione() {

@@ -1,6 +1,6 @@
 package control;
 
-import view.FinestraClient;
+import view.FinestraGioco;
 import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
@@ -10,28 +10,28 @@ import control.CollegamentoFinestraMenu;
 public class CollegamentoFinestraGioco implements ActionListener {
 	 
 
-	private FinestraClient finestra;
-	private CollegamentoFinestraMenu menuOpz;
+	private FinestraGioco finestraGioco;
+	private CollegamentoFinestraMenu aiutanteAzioniMenu;
 	private String mossaAvversario;
 
-	public CollegamentoFinestraGioco(FinestraClient frame) {
-		finestra.registraEvento(this);
+	public CollegamentoFinestraGioco(FinestraGioco frame) {
+		finestraGioco.registraEvento(this);
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == finestra.ritornaCarta()) {
+		if (e.getSource() == finestraGioco.ritornaCarta()) {
 			mossaAvversario = "carta";
 		}
-		if (e.getSource() == finestra.ritornaForbice()) {
+		if (e.getSource() == finestraGioco.ritornaForbice()) {
 			mossaAvversario = "forbice";
 		}
-		if (e.getSource() == finestra.ritornaSasso()) {
+		if (e.getSource() == finestraGioco.ritornaSasso()) {
 			mossaAvversario = "sasso";
 		}
 	}
 	
 	public void impostaScritte(String a) {
-		finestra.setContenuto1(a);
+		finestraGioco.setContenuto1(a);
 	}
 	
 	public String getMossa() {
