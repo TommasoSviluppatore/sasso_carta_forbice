@@ -63,15 +63,15 @@ public class FinestraMenu extends JFrame {
 		btnIniziaGioco.setBounds(110, 108, 269, 103);
 		contentPane.add(btnIniziaGioco);
 		
-		btnIniziaGioco.addActionListener(new ActionListener() {
+		/*btnIniziaGioco.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				/*continua=false;*/
+				/*continua=false;
 				giocatorePrimarioPartita.puoiProseguire(true);
 				giocatoreOspitePartita.puoiProseguire(true);
 				finestraGioco.main(null);
 			}
-		});
+		});*/
 		
 		lblTitolo = new JLabel("Sasso/Carta/Forbice");
 		lblTitolo.setForeground(Color.BLUE);

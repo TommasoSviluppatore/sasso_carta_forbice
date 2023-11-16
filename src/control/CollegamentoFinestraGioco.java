@@ -2,31 +2,41 @@ package control;
 
 import view.FinestraGioco;
 import java.awt.event.*;
+import java.io.ObjectOutputStream;
+import java.net.*;
 import java.util.*;
 import javax.swing.*;
 
-import control.CollegamentoFinestraMenu;
+import view.FinestraMenu;
 
-public class CollegamentoFinestraGioco implements ActionListener {
+public class CollegamentoFinestraGioco implements ActionListener{
 	 
 
 	private FinestraGioco finestraGioco;
-	private CollegamentoFinestraMenu aiutanteAzioniMenu;
-	private String mossaAvversario;
+	private CollegamentoFinestraMenu ottieniInformazioni;
+	//private String mossaAvversario;
+	private Socket connessione;//=new Socket(ottieniInformazioni.indirizzoConnesione(), ottieniInformazioni.portaConnessione());
+	private Object mossaAvversario = new ObjectOutputStream(connessione.getOutputStream());
+
 
 	public CollegamentoFinestraGioco(FinestraGioco frame) {
 		finestraGioco.registraEvento(this);
 	}
 
+
+	
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == finestraGioco.ritornaCarta()) {
-			mossaAvversario = "carta";
+			//mossaAvversario = "carta";
+			mossaAvversario.writeObject("carta");
 		}
 		if (e.getSource() == finestraGioco.ritornaForbice()) {
-			mossaAvversario = "forbice";
+			//mossaAvversario = "forbice";
+			mossaAvversario.writeObject("forbice");
 		}
 		if (e.getSource() == finestraGioco.ritornaSasso()) {
-			mossaAvversario = "sasso";
+			//mossaAvversario = "sasso";
+			mossaAvversario.writeObject("sasso");
 		}
 	}
 	

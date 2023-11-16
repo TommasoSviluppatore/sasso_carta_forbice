@@ -139,9 +139,12 @@ public class Server {
         		System.out.println("prima mossa del client");
     			aiutanteAzioniGioco.impostaScritte("Il server ha acconsentito a darti la prima mossa, cosa vuoi essere");
         		//output.write("Il server ha acconsentito a darti la prima mossa, cosa vuoi essere");
-        		rispostaGiocatore=/*input.readLine();*/aiutanteAzioniGioco.getMossa();
+        		try {
+					rispostaGiocatore=/*input.readLine();*//*aiutanteAzioniGioco.getMossa()*/versoIlServerOggetti.readObject().toString();
+				} catch (ClassNotFoundException e) {  e.printStackTrace(); }
 
-        		System.out.println("ora � il tuo turno, immetti la tua mossa");
+        		System.out.println("ora è il tuo turno, immetti la tua mossa");
+        		//immetti oggetto
         		rispostaServer=System.console().readLine();
         		toccaA=true;
         		
@@ -177,7 +180,10 @@ public class Server {
     		rispostaServer=System.console().readLine();
 
     		invioAlClient.write("ora � il tuo turno, immetti la tua mossa");
-    		rispostaGiocatore=aiutanteAzioniGioco.getMossa();
+    		//rispostaGiocatore=aiutanteAzioniGioco.getMossa();
+    		try {
+				rispostaGiocatore=versoIlServerOggetti.readObject().toString();
+			} catch (ClassNotFoundException e) {  e.printStackTrace(); }
     		toccaA=false;
     		
     		
@@ -227,7 +233,10 @@ public class Server {
             if(toccaA) {
             	//mossa del client
         		System.out.println("mossa del client");
-        		rispostaGiocatore=aiutanteAzioniGioco.getMossa();
+        		
+            	try {
+					versoIlServerOggetti.readObject().toString();
+				} catch (ClassNotFoundException e) {  e.printStackTrace(); }
 
         		System.out.println("mossa del server");
         		invioAlClient.write("mossa del server");
@@ -270,7 +279,9 @@ public class Server {
         		rispostaServer=System.console().readLine();
         		
             	System.out.println("mossa del client");
-        		rispostaGiocatore=aiutanteAzioniGioco.getMossa();
+            	try {
+					versoIlServerOggetti.readObject().toString();
+				} catch (ClassNotFoundException e) {  e.printStackTrace(); }
         		toccaA=!toccaA;
         		
         		if(mossaNumerata.valueOf(rispostaGiocatore.toUpperCase()) == mossaNumerata.valueOf(rispostaServer.toUpperCase())) {
