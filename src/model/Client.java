@@ -4,7 +4,7 @@ import java.io.*;
 import java.net.*; 
 import java.util.*;
 import control.CollegamentoFinestraMenu;
-import view.Menu;
+import view.FinestraMenu;
 
 /**<p>sezione principale del client, finché non viene premuto
  * nel bottone menu il pulsante "inizia gioco" la finestra del
@@ -17,7 +17,7 @@ public class Client {
 	private BufferedReader tastiera;
 	private CollegamentoFinestraMenu aiutanteAzioniMenu;
 	//da risolvere perché puntatore nullo
-	private Menu finestraMenu;
+	private FinestraMenu finestraMenu;
 	private boolean proseguiConGioco=false;
 	
 	public void puoiProseguire(boolean a) {proseguiConGioco=a;}
@@ -28,6 +28,7 @@ public class Client {
 		try {
 			//da fare che fa nascere l'interfaccia
 			//Menu.main(null);
+			finestraMenu.main(null);
 			while(/*menuInit.getContinua()*/!proseguiConGioco) {
 				Thread.sleep(1000);
 			}

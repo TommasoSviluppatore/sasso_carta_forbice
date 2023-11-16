@@ -5,7 +5,7 @@ import java.net.*;
 import java.util.*;
 
 import model.TCPBasic_Server;
-import view.FinestraClient;
+import view.FinestraGioco;
 import control.CollegamentoFinestraMenu;
 import control.CollegamentoFinestraGioco;
 import model.Client;
@@ -16,7 +16,8 @@ public class Server {
 	private BufferedReader input, dalClient;
 	private BufferedWriter output, dalServer;
 	private PrintStream alClient;
-	private FinestraClient fFinestraGioco;
+	
+	private FinestraGioco finestraGioco;
 	private CollegamentoFinestraMenu aiutanteAzioniMenu;
 	private CollegamentoFinestraGioco aiutanteAzioniGioco;
 	
@@ -40,14 +41,14 @@ public class Server {
 	 * @return non esistente
 	 * @see niente
 	 * @since adesso*/
-	public enum oggettochesie {
+	public enum mossaNumerata {
 	    SASSO(1),
 	    FORBICE(2),
 	    CARTA(3);
 
 	    private final int valore;
 
-	    oggettochesie(int valore) {
+	    mossaNumerata(int valore) {
 	        this.valore = valore;
 	    }
 
@@ -142,20 +143,20 @@ public class Server {
         		toccaA=true;
         		
         		
-        		if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()).getValore() == oggettochesie.valueOf(rispostaServer.toUpperCase()).getValore()) {
+        		if(mossaNumerata.valueOf(rispostaGiocatore.toUpperCase()).getValore() == mossaNumerata.valueOf(rispostaServer.toUpperCase()).getValore()) {
         			System.out.println("\nParreggio");
         			//output.write("Parreggio");
         			aiutanteAzioniGioco.impostaScritte("parreggio");
         			
         			
-        		}else if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()).getValore() < oggettochesie.valueOf(rispostaServer.toUpperCase()).getValore()) {
+        		}else if(mossaNumerata.valueOf(rispostaGiocatore.toUpperCase()).getValore() < mossaNumerata.valueOf(rispostaServer.toUpperCase()).getValore()) {
         			System.out.println("il giocatore 1 "/*server*/+"ha accumulato un punto");
         			//output.write("il giocatore 1 \"/*server*/+\"ha accumulato un punto");
         			aiutanteAzioniGioco.impostaScritte("il server ha fatto un punto");
         			vittorieServer++;
         			
         			
-        		}else if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()).getValore() > oggettochesie.valueOf(rispostaServer.toUpperCase()).getValore()){
+        		}else if(mossaNumerata.valueOf(rispostaGiocatore.toUpperCase()).getValore() > mossaNumerata.valueOf(rispostaServer.toUpperCase()).getValore()){
         			System.out.println("il giocatore 2 "/*giocatore*/+"ha accumulato un punto");
         			//output.write("il giocatore 2 \"/*client*/+\"ha accumulato un punto");
         			aiutanteAzioniGioco.impostaScritte("hai fatto un punto, complimenti!");
@@ -177,19 +178,19 @@ public class Server {
     		toccaA=false;
     		
     		
-    		if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()).getValore() == oggettochesie.valueOf(rispostaServer.toUpperCase()).getValore()) {
+    		if(mossaNumerata.valueOf(rispostaGiocatore.toUpperCase()).getValore() == mossaNumerata.valueOf(rispostaServer.toUpperCase()).getValore()) {
     			System.out.println("\nParreggio");
     			//output.write("Parreggio");
     			aiutanteAzioniGioco.impostaScritte("vi siete scontrati e siete morti entrambi");
     			
     			
-    		}else if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()).getValore() < oggettochesie.valueOf(rispostaServer.toUpperCase()).getValore()) {
+    		}else if(mossaNumerata.valueOf(rispostaGiocatore.toUpperCase()).getValore() < mossaNumerata.valueOf(rispostaServer.toUpperCase()).getValore()) {
     			System.out.println("il giocatore 1 "/*server*/+"ha accumulato un punto");
     			//output.write("il giocatore 1 \"/*server*/+\"ha accumulato un punto");
     			vittorieServer++;
     			
     			
-    		}else if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()).getValore() > oggettochesie.valueOf(rispostaServer.toUpperCase()).getValore()){
+    		}else if(mossaNumerata.valueOf(rispostaGiocatore.toUpperCase()).getValore() > mossaNumerata.valueOf(rispostaServer.toUpperCase()).getValore()){
     			System.out.println("il giocatore 2 "/*giocatoree*/+"ha accumulato un punto");
     			//output.write("il giocatore 2 \"/*client*/+\"ha accumulato un punto");
     			vittorieClient++;
@@ -232,20 +233,20 @@ public class Server {
         		toccaA=!toccaA;
         		
         		
-        		if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()).getValore() == oggettochesie.valueOf(rispostaServer.toUpperCase()).getValore()) {
+        		if(mossaNumerata.valueOf(rispostaGiocatore.toUpperCase()).getValore() == mossaNumerata.valueOf(rispostaServer.toUpperCase()).getValore()) {
         			System.out.println("\nParreggio");
         			//output.write("Parreggio");
         			aiutanteAzioniGioco.impostaScritte("vi siete scontrati e siete morti entrambi");
         			
         			
-        		}else if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()).getValore() < oggettochesie.valueOf(rispostaServer.toUpperCase()).getValore()) {
+        		}else if(mossaNumerata.valueOf(rispostaGiocatore.toUpperCase()).getValore() < mossaNumerata.valueOf(rispostaServer.toUpperCase()).getValore()) {
         			System.out.println("il giocatore 1 "/*server*/+"ha accumulato un punto");
         			//output.write("il giocatore 1 \"/*server*/+\"ha accumulato un punto");
         			vittorieServer++;
         			aiutanteAzioniGioco.impostaScritte("il server ha fatto un punto!");
         			
         			
-        		}else if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()).getValore() > oggettochesie.valueOf(rispostaServer.toUpperCase()).getValore()){
+        		}else if(mossaNumerata.valueOf(rispostaGiocatore.toUpperCase()).getValore() > mossaNumerata.valueOf(rispostaServer.toUpperCase()).getValore()){
         			System.out.println("il giocatore 2 "/*giocatore*/+"ha accumulato un punto");
         			//output.write("il giocatore 2 \"/*client*/+\"ha accumulato un punto");
         			vittorieClient++;
@@ -270,21 +271,21 @@ public class Server {
         		rispostaGiocatore=aiutanteAzioniGioco.getMossa();
         		toccaA=!toccaA;
         		
-        		if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()) == oggettochesie.valueOf(rispostaServer.toUpperCase())) {
+        		if(mossaNumerata.valueOf(rispostaGiocatore.toUpperCase()) == mossaNumerata.valueOf(rispostaServer.toUpperCase())) {
         			System.out.println("\nParreggio");
         			//output.write("Parreggio");
         			aiutanteAzioniGioco.impostaScritte("vi siete scontrati e siete morti entrambi");
         			
         			
         			
-        		}else if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()).getValore() < oggettochesie.valueOf(rispostaServer.toUpperCase()).getValore()) {
+        		}else if(mossaNumerata.valueOf(rispostaGiocatore.toUpperCase()).getValore() < mossaNumerata.valueOf(rispostaServer.toUpperCase()).getValore()) {
         			vittorieServer++;
         			System.out.println("il giocatore 1 "/*server*/+"ha accumulato un punto");
         			//output.write("il giocatore 1 \"/*server*/+\"ha accumulato un punto");
         			aiutanteAzioniGioco.impostaScritte("Nah");
         			
         			
-        		}else if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()).getValore() > oggettochesie.valueOf(rispostaServer.toUpperCase()).getValore()){
+        		}else if(mossaNumerata.valueOf(rispostaGiocatore.toUpperCase()).getValore() > mossaNumerata.valueOf(rispostaServer.toUpperCase()).getValore()){
         			vittorieClient++;
         			System.out.println("il giocatore 2 "/*giocatore*/+"ha accumulato un punto");
         			//output.write("il giocatore 2 \"/*client*/+\"ha accumulato un punto");

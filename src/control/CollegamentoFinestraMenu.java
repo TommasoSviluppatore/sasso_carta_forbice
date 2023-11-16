@@ -4,16 +4,16 @@ import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
 
-import view.Menu;
+import view.FinestraMenu;
 
 public class CollegamentoFinestraMenu implements ActionListener{
 	
 	/**<p>questa controller è l'aiutante della finestra menu</p>*/
-	private Menu menu;
+	private FinestraMenu menu;
 	private String mossaAvversario;
 	
 	
-	public CollegamentoFinestraMenu(Menu Menu) {
+	public CollegamentoFinestraMenu(FinestraMenu Menu) {
 		menu.registraEvento(this);
 	}
 	
