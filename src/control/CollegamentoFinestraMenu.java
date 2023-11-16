@@ -8,9 +8,9 @@ import view.Menu;
 
 public class CollegamentoFinestraMenu implements ActionListener{
 	
-	/**<p>questa controller è l'aiutante della finestra menu*/
+	/**<p>questa controller è l'aiutante della finestra menu</p>*/
 	private Menu menu;
-	private String mossa_avversario;
+	private String mossaAvversario;
 	
 	
 	public CollegamentoFinestraMenu(Menu Menu) {
@@ -23,7 +23,7 @@ public class CollegamentoFinestraMenu implements ActionListener{
 		}
 	}
 	public String getMossaAvversario() {
-		return mossa_avversario;
+		return mossaAvversario;
 	}
 	
 	public String indirizzoConnesione() {

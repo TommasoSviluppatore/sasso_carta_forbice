@@ -18,12 +18,12 @@ public class Menu extends JFrame {
 
 	private JPanel contentPane;
 	private JButton btnIniziaGioco;
-	private JLabel lblTitolo,lblCaricamento,manoForbice,manoSasso, manoForbice_1;
+	private JLabel lblTitolo, lblCaricamento, manoForbice, manoSasso, manoForbice_1;
 	private JTextField portaIP, indirozzoIP;
 	private boolean continua=true;
-	private FinestraClient giocoMora;
-	private Client proseguigioco;
-	private Server gestoreGioco;
+	private FinestraClient finestraGioco;
+	private Client giocatoreOspitePartita;
+	private Server giocatorePrimarioPartita;
 	
 	public boolean getContinua() {return this.continua;}
 	
@@ -67,9 +67,9 @@ public class Menu extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				/*continua=false;*/
-				proseguigioco.puoiProseguire(true);
-				gestoreGioco.puoiProseguire(true);
-				giocoMora.main(null);
+				giocatoreOspitePartita.puoiProseguire(true);
+				giocatorePrimarioPartita.puoiProseguire(true);
+				finestraGioco.main(null);
 			}
 		});
 		
@@ -120,7 +120,7 @@ public class Menu extends JFrame {
 		//JFrame finestraMenu = (JFrame) SwingUtilities.getWindowAncestor(menu);
 		this.dispose();
 		view.FinestraClient.main(null);
-		giocoMora.main(null);
+		finestraGioco.main(null);
 		
 		//new Thread((Runnable) new view.FinestraClient()).start();
 	}

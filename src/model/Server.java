@@ -13,17 +13,17 @@ import model.Client;
 public class Server {
 	private ServerSocket server;
 	private Socket connection;
-	private BufferedReader input,dalClient;
-	private BufferedWriter output,dalServer;
+	private BufferedReader input, dalClient;
+	private BufferedWriter output, dalServer;
 	private PrintStream alClient;
-	private FinestraClient finestra1;
-	private CollegamentoFinestraMenu ottienicose;
-	private CollegamentoFinestraGioco ottienigiococose;
+	private FinestraClient fFinestraGioco;
+	private CollegamentoFinestraMenu aiutanteAzioniMenu;
+	private CollegamentoFinestraGioco aiutanteAzioniGioco;
 	
 	private int vittorieServer=0, vittorieClient=0;
     private String rispostaServer, elementoEssereServer, elementoEssereGiocatore, rispostaGiocatore;
     private boolean toccaA=false;
-    private final int numeromosse=9;
+    private final int numeroMosse=9;
 	private boolean proseguiConGioco=false;
 	
 	/**
@@ -133,9 +133,9 @@ public class Server {
         	
         		//mossa del client
         		System.out.println("prima mossa del client");
-    			ottienigiococose.impostaScritte("Il server ha acconsentito a darti la prima mossa, cosa vuoi essere");
+    			aiutanteAzioniGioco.impostaScritte("Il server ha acconsentito a darti la prima mossa, cosa vuoi essere");
         		//output.write("Il server ha acconsentito a darti la prima mossa, cosa vuoi essere");
-        		rispostaGiocatore=/*input.readLine();*/ottienigiococose.getMossa();
+        		rispostaGiocatore=/*input.readLine();*/aiutanteAzioniGioco.getMossa();
 
         		System.out.println("ora � il tuo turno, immetti la tua mossa");
         		rispostaServer=System.console().readLine();
@@ -145,20 +145,20 @@ public class Server {
         		if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()).getValore() == oggettochesie.valueOf(rispostaServer.toUpperCase()).getValore()) {
         			System.out.println("\nParreggio");
         			//output.write("Parreggio");
-        			ottienigiococose.impostaScritte("parreggio");
+        			aiutanteAzioniGioco.impostaScritte("parreggio");
         			
         			
         		}else if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()).getValore() < oggettochesie.valueOf(rispostaServer.toUpperCase()).getValore()) {
         			System.out.println("il giocatore 1 "/*server*/+"ha accumulato un punto");
         			//output.write("il giocatore 1 \"/*server*/+\"ha accumulato un punto");
-        			ottienigiococose.impostaScritte("il server ha fatto un punto");
+        			aiutanteAzioniGioco.impostaScritte("il server ha fatto un punto");
         			vittorieServer++;
         			
         			
         		}else if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()).getValore() > oggettochesie.valueOf(rispostaServer.toUpperCase()).getValore()){
         			System.out.println("il giocatore 2 "/*giocatore*/+"ha accumulato un punto");
         			//output.write("il giocatore 2 \"/*client*/+\"ha accumulato un punto");
-        			ottienigiococose.impostaScritte("hai fatto un punto, complimenti!");
+        			aiutanteAzioniGioco.impostaScritte("hai fatto un punto, complimenti!");
         			vittorieClient++;
         			
         		}else{
@@ -173,14 +173,14 @@ public class Server {
     		rispostaServer=System.console().readLine();
 
     		output.write("ora � il tuo turno, immetti la tua mossa");
-    		rispostaGiocatore=ottienigiococose.getMossa();
+    		rispostaGiocatore=aiutanteAzioniGioco.getMossa();
     		toccaA=false;
     		
     		
     		if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()).getValore() == oggettochesie.valueOf(rispostaServer.toUpperCase()).getValore()) {
     			System.out.println("\nParreggio");
     			//output.write("Parreggio");
-    			ottienigiococose.impostaScritte("vi siete scontrati e siete morti entrambi");
+    			aiutanteAzioniGioco.impostaScritte("vi siete scontrati e siete morti entrambi");
     			
     			
     		}else if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()).getValore() < oggettochesie.valueOf(rispostaServer.toUpperCase()).getValore()) {
@@ -205,7 +205,7 @@ public class Server {
         /**<p>parte del programma che prosegue per 
          * numero specificato di mosse</p>
          * */
-        for(int mosse=0;mosse<numeromosse;mosse++) {
+        for(int mosse=0;mosse<numeroMosse;mosse++) {
 
             if (letta.compareTo("EXIT") == 0) {
                 output.write("CLOSE");
@@ -224,7 +224,7 @@ public class Server {
             if(toccaA) {
             	//mossa del client
         		System.out.println("mossa del client");
-        		rispostaGiocatore=ottienigiococose.getMossa();
+        		rispostaGiocatore=aiutanteAzioniGioco.getMossa();
 
         		System.out.println("mossa del server");
         		output.write("mossa del server");
@@ -235,25 +235,25 @@ public class Server {
         		if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()).getValore() == oggettochesie.valueOf(rispostaServer.toUpperCase()).getValore()) {
         			System.out.println("\nParreggio");
         			//output.write("Parreggio");
-        			ottienigiococose.impostaScritte("vi siete scontrati e siete morti entrambi");
+        			aiutanteAzioniGioco.impostaScritte("vi siete scontrati e siete morti entrambi");
         			
         			
         		}else if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()).getValore() < oggettochesie.valueOf(rispostaServer.toUpperCase()).getValore()) {
         			System.out.println("il giocatore 1 "/*server*/+"ha accumulato un punto");
         			//output.write("il giocatore 1 \"/*server*/+\"ha accumulato un punto");
         			vittorieServer++;
-        			ottienigiococose.impostaScritte("il server ha fatto un punto!");
+        			aiutanteAzioniGioco.impostaScritte("il server ha fatto un punto!");
         			
         			
         		}else if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()).getValore() > oggettochesie.valueOf(rispostaServer.toUpperCase()).getValore()){
         			System.out.println("il giocatore 2 "/*giocatore*/+"ha accumulato un punto");
         			//output.write("il giocatore 2 \"/*client*/+\"ha accumulato un punto");
         			vittorieClient++;
-        			ottienigiococose.impostaScritte("hai fatto punto!");
+        			aiutanteAzioniGioco.impostaScritte("hai fatto punto!");
         			
         		}else{
         			//output.write("errore generico da ignorare");
-        			ottienigiococose.impostaScritte("errore generico da ingnorare");
+        			aiutanteAzioniGioco.impostaScritte("errore generico da ingnorare");
         			System.out.println("errore generico da ingnorare");
         		}
         		
@@ -263,17 +263,17 @@ public class Server {
             	
         		System.out.println("mossa del server");
         		//output.write("mossa del server");
-    			ottienigiococose.impostaScritte("mossa del server");
+    			aiutanteAzioniGioco.impostaScritte("mossa del server");
         		rispostaServer=System.console().readLine();
         		
             	System.out.println("mossa del client");
-        		rispostaGiocatore=ottienigiococose.getMossa();
+        		rispostaGiocatore=aiutanteAzioniGioco.getMossa();
         		toccaA=!toccaA;
         		
         		if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()) == oggettochesie.valueOf(rispostaServer.toUpperCase())) {
         			System.out.println("\nParreggio");
         			//output.write("Parreggio");
-        			ottienigiococose.impostaScritte("vi siete scontrati e siete morti entrambi");
+        			aiutanteAzioniGioco.impostaScritte("vi siete scontrati e siete morti entrambi");
         			
         			
         			
@@ -281,18 +281,18 @@ public class Server {
         			vittorieServer++;
         			System.out.println("il giocatore 1 "/*server*/+"ha accumulato un punto");
         			//output.write("il giocatore 1 \"/*server*/+\"ha accumulato un punto");
-        			ottienigiococose.impostaScritte("Nah");
+        			aiutanteAzioniGioco.impostaScritte("Nah");
         			
         			
         		}else if(oggettochesie.valueOf(rispostaGiocatore.toUpperCase()).getValore() > oggettochesie.valueOf(rispostaServer.toUpperCase()).getValore()){
         			vittorieClient++;
         			System.out.println("il giocatore 2 "/*giocatore*/+"ha accumulato un punto");
         			//output.write("il giocatore 2 \"/*client*/+\"ha accumulato un punto");
-        			ottienigiococose.impostaScritte("hai fatto punto");
+        			aiutanteAzioniGioco.impostaScritte("hai fatto punto");
         			
         		}else{
         			//output.write("errore generico da ignorare");
-        			ottienigiococose.impostaScritte("errore generico da ingnorare");
+        			aiutanteAzioniGioco.impostaScritte("errore generico da ingnorare");
         			System.out.println("errore generico da ingnorare");
         		}
             }
@@ -303,22 +303,22 @@ public class Server {
         if(vittorieClient>vittorieServer) {
         	//output.write("\nil giocatore 2 ha vinto la partita");
         	System.out.println("\nhai perso!");
-        	ottienigiococose.impostaScritte("hai vinto, complimenti!, hai fatto "+vittorieClient+" punti!");
+        	aiutanteAzioniGioco.impostaScritte("hai vinto, complimenti!, hai fatto "+vittorieClient+" punti!");
         }
         else if(vittorieServer>vittorieClient) {
         	//output.write("\nil giocatore 1 ha vinto la partita");
         	System.out.println("\nhai vinto!");
-        	ottienigiococose.impostaScritte("hai perso, il giocatore 1 ha vinto la partita , con "+vittorieServer+" punti!");
+        	aiutanteAzioniGioco.impostaScritte("hai perso, il giocatore 1 ha vinto la partita , con "+vittorieServer+" punti!");
         }
         else if(vittorieClient==vittorieServer) {
         	//output.write("\npareggio");
         	System.out.println("\npareggio");
-        	ottienigiococose.impostaScritte("pareggio");
+        	aiutanteAzioniGioco.impostaScritte("pareggio");
         }
         else {
         	//output.write("\nerrore, altro giorno, altre roulette russe!");
         	System.out.println("\nerrore, altro giorno, altre roulette russe!");
-        	ottienigiococose.impostaScritte("errore, altro giorno, altre roulette russe!");
+        	aiutanteAzioniGioco.impostaScritte("errore, altro giorno, altre roulette russe!");
         }
         input.close();
         output.close();

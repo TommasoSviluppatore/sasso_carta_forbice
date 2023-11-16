@@ -15,9 +15,9 @@ public class Client {
 	private BufferedReader dalServer; 
 	private PrintStream alServer; // Scrive bytes mentre PrintWriter scrive caratteri 
 	private BufferedReader tastiera;
-	private CollegamentoFinestraMenu ottienicose;
+	private CollegamentoFinestraMenu aiutanteAzioniMenu;
 	//da risolvere perché puntatore nullo
-	private Menu menuInit;
+	private Menu finestraMenu;
 	private boolean proseguiConGioco=false;
 	
 	public void puoiProseguire(boolean a) {proseguiConGioco=a;}
@@ -33,7 +33,7 @@ public class Client {
 			}
 			/**
 			 * <p>dopo questa riga incomincia a giocare l'ospite</p>*/
-			connessione = new Socket(ottienicose.indirizzoConnesione(), ottienicose.portaConnessione()); 
+			connessione = new Socket(aiutanteAzioniMenu.indirizzoConnesione(), aiutanteAzioniMenu.portaConnessione()); 
 			dalServer = new BufferedReader(new InputStreamReader(connessione.getInputStream())); 
 			alServer = new PrintStream(connessione.getOutputStream()); 
 			} catch (IOException e) { e.printStackTrace(); } 
