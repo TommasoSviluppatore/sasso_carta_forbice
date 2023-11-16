@@ -1,11 +1,10 @@
-package model;
+package main;
 
 import java.io.*; 
 import java.net.*; 
 import java.util.*;
 
 import model.Client;
-import view.Menu;
 
 
 /** <p>lanciatore della sezione giocatore 1 (ospite) </p>
