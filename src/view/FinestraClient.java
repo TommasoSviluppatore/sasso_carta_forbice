@@ -2,19 +2,17 @@ package view;
 
 import java.awt.*;
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
+import javax.swing.border.*;
 import java.io.*;
 import javax.imageio.*;
-import control.OttenitoreCoseFinestraGioco;
+
+import control.CollegamentoFinestraGioco;
 
 public class FinestraClient extends JFrame {
 
 	private JPanel contentPane, pannelloInput, pannelloOutput;
 	private JLabel labelMessaggio;
 	private JButton btnForbice, btnSasso, btnCarta;
-	
-	private String contenuto1, contenuto2;
 	
 	/**
 	 * Launch the application.
@@ -74,8 +72,9 @@ public class FinestraClient extends JFrame {
 		pannelloOutput.setLayout(null);
 		
 		labelMessaggio = new JLabel("Benvenuto! Seleziona la mossa da giocare");
+		labelMessaggio.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 15));
 		labelMessaggio.setHorizontalAlignment(SwingConstants.CENTER);
-		labelMessaggio.setBounds(12, 53, 400, 15);
+		labelMessaggio.setBounds(0, 33, 412, 33);
 		pannelloOutput.add(labelMessaggio);
 	}
 	
@@ -91,7 +90,10 @@ public class FinestraClient extends JFrame {
 		return btnForbice;
 	}
 	
-	public void registraEvento(OttenitoreCoseFinestraGioco controller) {
+	/**<p>creatore dell'action listener su "collegamentofinestragioco"</p>
+	 * @param controller
+	 */
+	public void registraEvento(CollegamentoFinestraGioco controller) {
 		// TODO Auto-generated method stub
 		this.btnCarta.addActionListener(controller);
 		this.btnSasso.addActionListener(controller);
@@ -102,16 +104,8 @@ public class FinestraClient extends JFrame {
 		this.labelMessaggio.setText(a); 
 	}
 	
-	public void setContenuto2(String a) { 
-		this.contenuto1=a; 
-	}
-	
 	public String getContenuto1() { 
 		return labelMessaggio.getText(); 
-	}
-	
-	public String getContenuto2() { 
-		return contenuto1; 
 	}
 	
 	public void apriFinestra() {

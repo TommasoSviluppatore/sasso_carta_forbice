@@ -37,6 +37,8 @@ public class Partita {
 	}
 	
 	public void confrontaScelte() {
+		//qua il confronta semplice era più semplificato nel mio ma più
+		//complesso allo stesso tempo, va bene così. dai...
 		if((this.sceltaClient1.compareTo("forbice")==0 && this.sceltaClient2.compareTo("forbice")==0)||(this.sceltaClient1.compareTo("sasso")==0 && this.sceltaClient2.compareTo("sasso")==0)||(this.sceltaClient1.compareTo("carta")==0 && this.sceltaClient2.compareTo("carta")==0)) {
 			this.setEsito("Pareggio");
 		}else if((this.sceltaClient1.compareTo("forbice")==0 && this.sceltaClient2.compareTo("carta")==0)||(this.sceltaClient1.compareTo("sasso")==0 && this.sceltaClient2.compareTo("forbice")==0)||(this.sceltaClient1.compareTo("carta")==0 && this.sceltaClient2.compareTo("sasso")==0)){
